@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186593298923",
+    "project_id": "ss5-angry-gran-vs-naughty-pet",
+    "storage_bucket": "ss5-angry-gran-vs-naughty-pet.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186593298923:android:7dfdc5613e434254a5f1ae",
+        "android_client_info": {
+          "package_name": "com.ss.angry.gran.naughty.pet.sim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOQ8G6PKFBlYBEgkC57xRORhmpGHzOGfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
