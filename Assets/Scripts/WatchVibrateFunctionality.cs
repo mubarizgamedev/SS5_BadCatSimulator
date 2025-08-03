@@ -25,7 +25,12 @@ public class WatchVibrateFunctionality : MonoBehaviour
 
     }
 
-   
+    private void OnDestroy()
+    {
+        TouchCheck.OnTouch -= OnFirstConvoPanelBackClicked;
+    }
+
+
 
     //void OnWatchButtonClicked()
     //{
