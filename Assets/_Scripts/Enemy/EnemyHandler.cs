@@ -51,7 +51,6 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] string cameraAnimShakeTrigger = "Shake";
 
     [Header("Events")]
-    public UnityEvent OnGrannyHitCat;
     public UnityEvent OnAttackStart;
     public static event Action OnGrannyNear;
 
@@ -60,6 +59,7 @@ public class EnemyHandler : MonoBehaviour
     public bool isChasingCat;
     private float chaseTimer;
     public static bool canAttackCat;
+    public static event Action OnGrannyHitCat;
 
     int selectedIndexForCat;
     int selectedIndexForGranny;
