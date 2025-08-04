@@ -114,7 +114,7 @@ public class dnt_Touch_AD : MonoBehaviour
     }
     void load_rv()
     {
-
+        if(AdmobAdsManager.Instance)
         if (AdmobAdsManager.Instance._Name == true)
         {
             //ADsMax

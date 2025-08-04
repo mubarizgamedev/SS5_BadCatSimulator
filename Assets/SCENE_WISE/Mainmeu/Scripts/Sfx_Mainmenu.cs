@@ -9,6 +9,7 @@ public class Sfx_Mainmenu : MonoBehaviour
     public AudioClip newSoundButton;
     public AudioClip petSelect;
     public AudioClip granSelect;
+    public AudioClip[] tapSound;
 
     private void Awake()
     {
