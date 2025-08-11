@@ -46,6 +46,9 @@ public class Breakable : MonoBehaviour
             
             canBreak = false;
 
+            if (EnemyHandler.Instance)
+                EnemyHandler.Instance.Btn_call();
+
         }
     }
 

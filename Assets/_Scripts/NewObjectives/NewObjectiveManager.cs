@@ -245,4 +245,21 @@ public class NewObjectiveManager : MonoBehaviour
     {
         petCamera.enabled = cond;
     }
+
+    public void IndicatorHint()
+    {
+        ObjectiveBase currentGo = currentLevelGameobject.GetComponent<ObjectiveBase>();
+        if (currentGo)
+        {
+            currentGo.EnableIndicatorGameobjects();
+        }
+    }
+    public void DisableHintObjects()
+    {
+        ObjectiveBase currentGo = currentLevelGameobject.GetComponent<ObjectiveBase>();
+        if (currentGo)
+        {
+            currentGo.DisableIndicatorGameobjects();
+        }
+    }
 }

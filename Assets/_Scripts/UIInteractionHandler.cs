@@ -129,7 +129,7 @@ public class UIInteractionHandler : MonoBehaviour
 
     IEnumerator NextMissionCoroutine()
     {
-        //NewObjectiveManager.Instance.DisableHintObjects();
+        NewObjectiveManager.Instance.DisableHintObjects();
         fadePanel.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -237,12 +237,13 @@ public class UIInteractionHandler : MonoBehaviour
 
     IEnumerator MissionComplete()
     {
+        Debug.Log("Mission Complete Coroutine Called");
         adAfter40Sec.ResetAdTimer();
         specialAttack_Pop.ResetSpeacialTimer();
         fadePanel.SetActive(true);
         EnemyHandler.Instance.ResetState();
-        //NewObjectiveManager.Instance.AdCoinsOnLevelComplete();
-        //SFX_Manager.PlaySound(NewObjectiveManager.Instance.completeClip);
+        NewObjectiveManager.Instance.AdCoinsOnLevelComplete();
+        SFX_Manager.PlaySound(NewObjectiveManager.Instance.completeClip);
 
         yield return new WaitForSeconds(1.5f);
 

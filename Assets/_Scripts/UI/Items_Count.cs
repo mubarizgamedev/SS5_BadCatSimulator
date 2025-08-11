@@ -9,7 +9,7 @@ public class Items_Count : MonoBehaviour
     [SerializeField] Text healthText;
     [SerializeField] Text levelNumberText;
     [SerializeField] Image levelProgress;
-    public ModesAd modeAd;
+    int totalCoins;
     public static event Action<int> OnCoinsUpdated;
 
     int keyCount;
@@ -17,6 +17,7 @@ public class Items_Count : MonoBehaviour
 
     private void Start()
     {
+        totalCoins = PlayerPrefs.GetInt("MyCoins", 0);
         LoadPlayerPrefs();
         ModesAd.OnCoinsUpdated += ModesAd_OnCoinsUpdated;
     }
@@ -69,10 +70,12 @@ public class Items_Count : MonoBehaviour
         float progress = (float)currrentValue / totalValue;
         levelProgress.fillAmount = progress;
     }
-    
+
     public void Ad50Coins()
     {
-        modeAd.AddCoins(50);
+        
+        totalCoins += 100;
+        PlayerPrefs.SetInt("MyCoins", totalCoins);
     }
 
 }

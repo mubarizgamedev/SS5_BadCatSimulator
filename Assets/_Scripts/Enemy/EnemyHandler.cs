@@ -288,7 +288,7 @@ public class EnemyHandler : MonoBehaviour
                 {
                     if (AdmobAdsManager.Instance.Check_Firebase && Application.internetReachability != NetworkReachability.NotReachable)
                     {
-                        Firebase.Analytics.FirebaseAnalytics.LogEvent("Level " + objectiveManager.CurrentLevel() + " Fail" );
+                        Firebase.Analytics.FirebaseAnalytics.LogEvent("Level " + newobjecttiveManager.CurrentLevel() + " Fail" );
                         Debug.Log("Level " + objectiveManager.CurrentLevel() + " Fail");
                     }
                 }

@@ -40,6 +40,8 @@ public class PickableObject : MonoBehaviour
     Collider M_Collider;
     bool kitchenObjBreakCall = true;
     bool canPlaySound = false;
+
+    Breakable breakableObject;
     #region UNITY FUNCTIONS  
 
     private void Start()
@@ -47,6 +49,7 @@ public class PickableObject : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         M_Collider = GetComponent<Collider>();
         target = FindFirstObjectByType<ObjectTargetAtPlayer>().transform;
+        breakableObject = GetComponent<Breakable>();
     }
 
    
@@ -103,7 +106,7 @@ public class PickableObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (ObjectThrower.Instance.canPlaySound)
+        if (ObjectThrower.Instance.canPlaySound && !breakableObject)
         {
             SFX_Manager.PlayRandomSound(SFX_Manager.Instance.hitObjectRandom, 1f);
         }

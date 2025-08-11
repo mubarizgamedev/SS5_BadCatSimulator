@@ -21,6 +21,8 @@ public abstract class ObjectiveBase : MonoBehaviour
     Transform petEyesCamera;
     public static event Action OnLevelComplete;
 
+    public GameObject[] indicatorGameobjects;
+
     protected virtual void OnEnable()
     {
         Invoke(nameof(InitObjective), 0.05f);
@@ -78,7 +80,7 @@ public abstract class ObjectiveBase : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-       
+        DisableIndicatorGameobjects();
     }
 
     protected  virtual string LevelNumber()
@@ -139,5 +141,27 @@ public abstract class ObjectiveBase : MonoBehaviour
         NewObjectiveManager.Instance.ResetGrannyState();
 
         InitObjective();
+    }
+
+    public void EnableIndicatorGameobjects()
+    {
+        if (indicatorGameobjects != null)
+        {
+            foreach (var item in indicatorGameobjects)
+            {
+                item.SetActive(true);
+            }
+        }
+    }
+
+    public void DisableIndicatorGameobjects()
+    {
+        if (indicatorGameobjects != null)
+        {
+            foreach (var item in indicatorGameobjects)
+            {
+                item.SetActive(false);
+            }
+        }
     }
 }

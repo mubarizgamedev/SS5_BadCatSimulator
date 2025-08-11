@@ -33,6 +33,7 @@ TagManager:
   - ObjKey
   - Quest
   - Toy
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

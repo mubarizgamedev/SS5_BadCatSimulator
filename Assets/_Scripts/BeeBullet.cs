@@ -7,12 +7,15 @@ public class BeeBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("BeeBullet Triggered with: " + other.gameObject.name);
 
         if (other.gameObject.CompareTag("Enemy"))
         {
+
             OnBeeBulletHitGranny?.Invoke();
+            Destroy(gameObject, 2f);
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject, 2f);
     }
 }
