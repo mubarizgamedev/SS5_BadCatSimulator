@@ -23,6 +23,7 @@ public class GameStateManager : MonoBehaviour
     public event Action OnGamePaused;
     public event Action OnGameResumed;
     public event Action OnGameRestarted;
+    public event Action OnLevelSkip;
 
     // Methods to invoke events
     public void MissionFailed()
@@ -52,6 +53,12 @@ public class GameStateManager : MonoBehaviour
     public void RestartGame()
     {
         OnGameRestarted?.Invoke();
+        Debug.Log("Game Restarted");
+    }
+    
+    public void SkipLevel()
+    {
+        OnLevelSkip?.Invoke();
         Debug.Log("Game Restarted");
     }
 }

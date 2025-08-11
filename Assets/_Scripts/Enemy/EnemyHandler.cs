@@ -25,23 +25,20 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] float maxDistance = 2f;
 
     [Header("Components")]
-    [SerializeField] Objective_Manager objectiveManager;
     [SerializeField] NewObjectiveManager newobjecttiveManager;
     [SerializeField] GameObject WanderingChildGameObject;
     [SerializeField] Transform catTransform;
     [SerializeField] AimConstraint headAimConstraint;
     [SerializeField] RotationConstraint bodyRotationConstraint;
     [SerializeField] Animator cameraAnimator;
-    [SerializeField] GameObject fadeGObj;
     [SerializeField] GameObject catDeathAnimGameobject;
     [SerializeField] GameObject DogDeathAnimGameobject;
     [SerializeField] GameObject dangerMusicWhenChasingCat;
     [SerializeField] GameObject mainMusicGameObject;
     [SerializeField] GameObject bloodOverlayUI;
-    [SerializeField] GameObject bat2;
-    [SerializeField] GameObject bat1;
     [SerializeField] RuntimeAnimatorController oldController;
     [SerializeField] EnemyWandering enemyWandering;
+    [SerializeField] GameObject[] grannyBats;
 
     [Header("Animation Parameter Strings")]
     [SerializeField] string animAttackBool = "isAttack";
@@ -53,13 +50,14 @@ public class EnemyHandler : MonoBehaviour
     [Header("Events")]
     public UnityEvent OnAttackStart;
     public static event Action OnGrannyNear;
+    public static event Action GrannyAboutToAttack;
 
     private Animator m_Animator;
     public NavMeshAgent m_Agent;
     public bool isChasingCat;
     private float chaseTimer;
     public static bool canAttackCat;
-    public static event Action OnGrannyHitCat;
+
 
     int selectedIndexForCat;
     int selectedIndexForGranny;
@@ -160,7 +158,7 @@ public class EnemyHandler : MonoBehaviour
 
     public void TriggerAngerGranny()
     {
-        Debug.Log("Granny is angry");
+        //Debug.Log("Granny is angry");
         m_Animator.runtimeAnimatorController = oldController;
         StartChasingCat();
     }
@@ -202,7 +200,6 @@ public class EnemyHandler : MonoBehaviour
         m_Animator.ResetTrigger(animAfterSpecial);
         m_Animator.SetBool("Wander", false);
         SFX_Manager.PlaySound(SFX_Manager.Instance.angryTalkGranny);
-        Debug.Log("sound times");
         SFX_Manager.PlaySound(SFX_Manager.Instance.OnDangerSounds, 0.5f);
         isChasingCat = true;
         if (m_Agent.enabled && m_Agent.isOnNavMesh)
@@ -251,6 +248,7 @@ public class EnemyHandler : MonoBehaviour
         if (distanceToCat <= stopDistanceBeforeCat)
         {
             canAttackCat = true;
+            GrannyAboutToAttack?.Invoke();
             AttackCat();
         }
         else if (chaseTimer >= maxTimeGrannyChaseCat)
@@ -289,13 +287,24 @@ public class EnemyHandler : MonoBehaviour
                     if (AdmobAdsManager.Instance.Check_Firebase && Application.internetReachability != NetworkReachability.NotReachable)
                     {
                         Firebase.Analytics.FirebaseAnalytics.LogEvent("Level " + newobjecttiveManager.CurrentLevel() + " Fail" );
-                        Debug.Log("Level " + objectiveManager.CurrentLevel() + " Fail");
+                        Debug.Log("Level " + newobjecttiveManager   .CurrentLevel() + " Fail");
                     }
                 }
 
             }
         }
 
+        StartCoroutine(FailCoroutine());
+
+    }
+
+    IEnumerator FailCoroutine()
+    {
+        yield return new WaitForSeconds(4f);
+
+        GameStateManager.Instance.MissionFailed();
+
+        Debug.Log("Mission Failed is fired");
     }
 
     private bool IsCatInDetectionRadius()
@@ -343,18 +352,7 @@ public class EnemyHandler : MonoBehaviour
 
     public void GrannyAttacked()
     {
-        Debug.Log("Granny Attacked function in Enemy Handler has been called by the animation event");
-
-        OnGrannyHitCat?.Invoke();
-        if (IsCatSelected())
-        {
-            SFX_Manager.PlaySound(SFX_Manager.Instance.catCrySound);
-        }
-        else
-        {
-            SFX_Manager.PlaySound(SFX_Manager.Instance.dogCrySound);
-        }
-
+        SFX_Manager.PlaySound(SFX_Manager.Instance.catCrySound);
         SFX_Manager.PlaySound(SFX_Manager.Instance.catHitSound);
         SFX_Manager.PlayRandomSound(SFX_Manager.Instance.OnDieSounds, 0.5f);
         cameraAnimator.SetTrigger(cameraAnimShakeTrigger);

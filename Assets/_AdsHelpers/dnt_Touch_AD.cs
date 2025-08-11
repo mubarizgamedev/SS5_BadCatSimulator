@@ -79,13 +79,13 @@ public class dnt_Touch_AD : MonoBehaviour
     void re_set()
     {
         CancelInvoke("Counter");
-        Debug.Log("Counter = Reset");
+        //Debug.Log("Counter = Reset");
         task();
     }
 
     public void Get_Coins()
     {
-        Debug.Log("Counter = AD Call");
+        //Debug.Log("Counter = AD Call");
         Invoke(nameof(waitAD_now), 0.1f);
     }
 

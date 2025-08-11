@@ -6,7 +6,7 @@ public static class Logging
 
     static public void Log(object message)
     {
-        UnityEngine.Debug.Log(message);
+        //UnityEngine.Debug.Log(message);
 
     }
 }

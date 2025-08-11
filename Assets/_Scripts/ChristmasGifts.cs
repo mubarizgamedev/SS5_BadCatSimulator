@@ -13,7 +13,7 @@ public class ChristmasGifts : MonoBehaviour
         {
             if (canDamageGranny)
             {
-                Debug.Log("Gift hit granny");
+                //Debug.Log("Gift hit granny");
                 OnGifthitGranny?.Invoke();
                 canDamageGranny =false;
             }            

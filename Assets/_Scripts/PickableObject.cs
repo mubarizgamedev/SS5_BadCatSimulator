@@ -156,8 +156,6 @@ public class PickableObject : MonoBehaviour
     {
         if (EnemyHandler.Instance)
             EnemyHandler.Instance.Btn_call();
-        //OnObjectHitGranny?.Invoke();
-        Debug.Log("...............................");
     }
 
 

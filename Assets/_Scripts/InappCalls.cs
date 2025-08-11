@@ -77,7 +77,7 @@ public class InappCalls : MonoBehaviour
         btninappPet2Call.onClick.AddListener(PurchasePet2);
         btninappPet3Call.onClick.AddListener(PurchasePet3);
         btninappGran2Call.onClick.AddListener(PurchaseGrann2);
-        btninappGran3Call.onClick.AddListener(PurchaseGrann2);
+        btninappGran3Call.onClick.AddListener(PurchaseGrann3);
     }
 
 

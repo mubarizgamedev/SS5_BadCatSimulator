@@ -243,7 +243,7 @@ public class AdmobAdsManager : MediationHandler
         if (FB_Chk == true)
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent(FB_Line);
-            print("FB:=>" + FB_Line);
+            //print("FB:=>" + FB_Line);
         }
     }
 

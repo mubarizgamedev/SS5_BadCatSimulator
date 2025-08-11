@@ -134,7 +134,7 @@ public class PlayerRaycaster : MonoBehaviour
                     {
                         objectFound = true;
                         OnInteractWithPickable?.Invoke();
-                        Debug.Log("interectable found found");
+                        //Debug.Log("interectable found found");
                         if (hitInfo.collider.TryGetComponent<PickableObject>(out PickableObject pickableObject))
                         {
                             currentObjectName = pickableObject.GetObjectName();

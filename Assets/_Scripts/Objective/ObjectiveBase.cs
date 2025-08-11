@@ -78,6 +78,7 @@ public abstract class ObjectiveBase : MonoBehaviour
     }
 
 
+
     protected virtual void OnDisable()
     {
         DisableIndicatorGameobjects();
@@ -92,7 +93,7 @@ public abstract class ObjectiveBase : MonoBehaviour
 
     protected IEnumerator ObjectiveCompleteCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         NewObjectiveManager.Instance.AdCoinsOnLevelComplete();
 
@@ -102,13 +103,15 @@ public abstract class ObjectiveBase : MonoBehaviour
 
         OnLevelComplete?.Invoke();
 
-        NewObjectiveManager.Instance.fadeObject.SetActive(true);
 
         if (AdmobAdsManager.Instance.Check_Firebase && Application.internetReachability != NetworkReachability.NotReachable)
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"{LevelNumber()} Completed");
             Debug.Log($"{LevelNumber()} Completed");
         }
+
+
+        GameStateManager.Instance.MissionCompleted();
     }
 
 
@@ -163,5 +166,10 @@ public abstract class ObjectiveBase : MonoBehaviour
                 item.SetActive(false);
             }
         }
+    }
+
+    public void CompleteProgressManually()
+    {
+        ProgressCompleted();
     }
 }

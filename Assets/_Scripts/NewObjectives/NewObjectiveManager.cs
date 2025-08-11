@@ -184,6 +184,10 @@ public class NewObjectiveManager : MonoBehaviour
         }
     }
 
+    public void SkipThisLevel()
+    {
+        currentObjective.CompleteProgressManually();
+    }
     public void ResetGrannyState()
     {
         enemyHandler.isChasingCat = false;

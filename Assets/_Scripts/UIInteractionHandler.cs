@@ -50,6 +50,7 @@ public class UIInteractionHandler : MonoBehaviour
         GameStateManager.Instance.OnGamePaused += ShowPauseMenu;
         GameStateManager.Instance.OnGameResumed += HidePauseMenu;
         GameStateManager.Instance.OnGameRestarted += ResetGame;
+        GameStateManager.Instance.OnLevelSkip += SkipLevel;
     }
     
 
@@ -62,6 +63,7 @@ public class UIInteractionHandler : MonoBehaviour
         GameStateManager.Instance.OnGamePaused -= ShowPauseMenu;
         GameStateManager.Instance.OnGameResumed -= HidePauseMenu;
         GameStateManager.Instance.OnGameRestarted -= ResetGame;
+        GameStateManager.Instance.OnLevelSkip -= SkipLevel;
     }
     
     void AssigningButtons()
@@ -287,6 +289,36 @@ public class UIInteractionHandler : MonoBehaviour
         yield return new WaitForSeconds(0f);
         missionFailPanel.SetActive(true);
         fadePanel.SetActive(false);
+    }
+
+    #endregion
+
+    #region SKIP LEVEL
+
+    void SkipLevel()
+    {
+        if (adsNotAllowed)
+        {
+            SkipWork();
+        }
+        else
+        {
+            RewardAdCall.Instance.StartLoading(SkipWork);
+        }
+    }
+
+    void SkipWork()
+    {
+        StartCoroutine(SkipCoroutine());
+    }
+
+    IEnumerator SkipCoroutine()
+    {
+        EnemyHandler.Instance.ResetState();
+        NewObjectiveManager.Instance.SkipThisLevel();
+        fadePanel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     #endregion
