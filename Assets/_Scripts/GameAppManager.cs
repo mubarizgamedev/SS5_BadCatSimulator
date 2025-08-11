@@ -34,8 +34,6 @@ public class GameAppManager : MonoBehaviour, IStoreListener
     //public static string UnlockCars="unlockcars";
     private static string kProductNameAppleSubscription = "com.unity3d.subscription.new";
     private static string kProductNameGooglePlaySubscription = "com.unity3d.subscription.original";
-    [SerializeField] PetSelectionMainMenu petselection;
-    [SerializeField] GrannySelection grannySelection;
     void Awake()
     {
         //		instance = this;
@@ -302,7 +300,8 @@ public class GameAppManager : MonoBehaviour, IStoreListener
         else if (String.Equals(args.purchasedProduct.definition.id, GameAppManager.instance.iapitems[1].iapItem_Name, StringComparison.Ordinal))//unlock_player
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            petselection.UnlockAllPets();
+            PlayerPrefs.SetInt("CatUnlocked_" + 1, 1);
+            PlayerPrefs.SetInt("CatUnlocked_" + 2, 1);
             Debug.Log("Unlocked all pets"); 
 
         }
@@ -310,7 +309,8 @@ public class GameAppManager : MonoBehaviour, IStoreListener
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            grannySelection.UnlockAllGarns();   
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 1, 1);
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 2, 1);
             Debug.Log("Unlocked all Grans");
 
         }
@@ -318,8 +318,10 @@ public class GameAppManager : MonoBehaviour, IStoreListener
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            petselection.UnlockAllPets();
-            grannySelection.UnlockAllGarns();
+            PlayerPrefs.SetInt("CatUnlocked_" + 1, 1);
+            PlayerPrefs.SetInt("CatUnlocked_" + 2, 1);
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 1, 1);
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 2, 1);
             AdmobAdsManager.Instance.Skip_Appopen = true;
             AdmobAdsManager.Instance.Skip_Banner_Top = true;
             AdmobAdsManager.Instance.Skip_MedRec = true;
@@ -330,25 +332,26 @@ public class GameAppManager : MonoBehaviour, IStoreListener
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            petselection.UnlockPetAtIndex(1);
+            PlayerPrefs.SetInt("CatUnlocked_" + 1, 1);
         }
         else if (String.Equals(args.purchasedProduct.definition.id, GameAppManager.instance.iapitems[5].iapItem_Name, StringComparison.Ordinal))//cars
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            petselection.UnlockPetAtIndex(2);
+            PlayerPrefs.SetInt("CatUnlocked_" + 2, 1);
         }
         else if (String.Equals(args.purchasedProduct.definition.id, GameAppManager.instance.iapitems[6].iapItem_Name, StringComparison.Ordinal))//cars
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            grannySelection.UnlockGranAtIndex(1);
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 1, 1);
+            
         }
         else if (String.Equals(args.purchasedProduct.definition.id, GameAppManager.instance.iapitems[7].iapItem_Name, StringComparison.Ordinal))//cars
         {
 
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
-            grannySelection.UnlockGranAtIndex(2);
+            PlayerPrefs.SetInt("GrannyUnlocked_" + 2, 1);
         }
         else
         {
