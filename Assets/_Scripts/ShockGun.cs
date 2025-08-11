@@ -12,7 +12,7 @@ public class ShockGun : MonoBehaviour
         GameObject current = Instantiate(currentGameObject, spawnPoint.position, Quaternion.identity);
         Rigidbody rb = current.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        Debug.LogError("current bullet spawned");
+        Debug.Log("current bullet spawned");
     }
 
     public void ShootFire()
@@ -20,13 +20,13 @@ public class ShockGun : MonoBehaviour
         GameObject current = Instantiate(fireGameObject, spawnPoint.position, Quaternion.identity);
         Rigidbody rb = current.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        Debug.LogError("fire bullet spawned");
+        Debug.Log("fire bullet spawned");
     }
     public void ShootBee()
     {
         GameObject current = Instantiate(beeGameObject, spawnPoint.position, Quaternion.identity);
         Rigidbody rb = current.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-        Debug.LogError("bee bullet spawned");
+        Debug.Log("bee bullet spawned");
     }
 }

@@ -44,6 +44,15 @@ public class InappCalls : MonoBehaviour
     public Button btninappGran3Call;
     public GameObject GetGran3Panel;
 
+    [Space(5)]
+    [Header("Selections Pets and Grans")]
+    public Button selectPet2;
+    public Button selectPet3;
+    public Button selectGran2;
+    public Button selectGran3;
+
+    
+
 
     private void Start()
     {
@@ -55,15 +64,20 @@ public class InappCalls : MonoBehaviour
         btninappGetCatCall.onClick.AddListener(PurchaseAllCats);
         btninappGetAllCall.onClick.AddListener(PurchaseEverything);
 
-        inappPet2.onClick.AddListener(PanelPet2);
-        inappPet3.onClick.AddListener(PanelPet3);
-        inappGran2.onClick.AddListener(PanelGranny2);
+        inappPet2.onClick.AddListener(PurchasePet2);
+        inappPet3.onClick.AddListener(PurchasePet3);
+        inappGran2.onClick.AddListener(PurchaseGrann2);
         inappGran3.onClick.AddListener(PanelGranny3);
+
+        selectPet2.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
+        selectPet3.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
+        selectGran2.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
+        selectGran3.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
 
         btninappPet2Call.onClick.AddListener(PurchasePet2);
         btninappPet3Call.onClick.AddListener(PurchasePet3);
         btninappGran2Call.onClick.AddListener(PurchaseGrann2);
-        btninappGran3Call.onClick.AddListener(PurchaseGrann3);
+        btninappGran3Call.onClick.AddListener(PurchaseGrann2);
     }
 
 
@@ -159,4 +173,7 @@ public class InappCalls : MonoBehaviour
     {
         GameAppManager.instance.BuyThirdGran();
     }
+
+
+
 }

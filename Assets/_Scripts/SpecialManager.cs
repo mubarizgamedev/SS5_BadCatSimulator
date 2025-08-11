@@ -77,26 +77,26 @@ public class SpecialManager : MonoBehaviour
     int val;
     void REWARDADFORBee()
     {
-        rewardLoadingPanel.SetActive(true);
+       
         load_rew();
         Invoke(nameof(ShowRewardForBee), Timer_xXx);
 
     }
     void REWARDADFORFire()
     {
-        rewardLoadingPanel.SetActive(true);
+        
         load_rew();
         Invoke(nameof(ShowRewardForFire), Timer_xXx);
     }
     void REWARDADFORPunch()
     {
-        rewardLoadingPanel.SetActive(true);
+        
         load_rew();
         Invoke(nameof(ShowRewardForPunch), Timer_xXx);
     }
     void REWARDADFORShock()
     {
-        rewardLoadingPanel.SetActive(true);
+        
         load_rew();
         Invoke(nameof(ShowRewardForShock), Timer_xXx);
     }
@@ -256,7 +256,7 @@ public class SpecialManager : MonoBehaviour
         else
         {
             Timer_xXx = 6f;
-            AdmobAdsManager.Instance.LoadRewardedVideo();
+            RewardAdCall.Instance.StartLoading(Chk_Chk);
         }
     }
     void show_rew()
@@ -267,7 +267,8 @@ public class SpecialManager : MonoBehaviour
         }
         else
         {
-            AdmobAdsManager.Instance.ShowRewardedVideo(Chk_Chk);
+            //AdmobAdsManager.Instance.ShowRewardedVideo(Chk_Chk);
+            //
         }
     }
 }
