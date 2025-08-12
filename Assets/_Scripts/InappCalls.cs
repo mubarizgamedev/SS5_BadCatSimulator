@@ -67,7 +67,7 @@ public class InappCalls : MonoBehaviour
         inappPet2.onClick.AddListener(PurchasePet2);
         inappPet3.onClick.AddListener(PurchasePet3);
         inappGran2.onClick.AddListener(PurchaseGrann2);
-        inappGran3.onClick.AddListener(PanelGranny3);
+        inappGran3.onClick.AddListener(PurchaseGrann3);
 
         selectPet2.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
         selectPet3.onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> Debug.Log("Ad Shown")));
