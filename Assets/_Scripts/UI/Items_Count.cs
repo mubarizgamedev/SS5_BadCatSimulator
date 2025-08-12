@@ -17,6 +17,7 @@ public class Items_Count : MonoBehaviour
 
     private void Start()
     {
+        UpdateCoins();
         totalCoins = PlayerPrefs.GetInt("MyCoins", 0);
         LoadPlayerPrefs();
         ModesAd.OnCoinsUpdated += ModesAd_OnCoinsUpdated;
@@ -76,6 +77,12 @@ public class Items_Count : MonoBehaviour
         
         totalCoins += 100;
         PlayerPrefs.SetInt("MyCoins", totalCoins);
+    }
+
+    void UpdateCoins()
+    {
+        speacialsCountText.text = PlayerPrefs.GetInt("MyCoins", 0).ToString();
+        Invoke(nameof(UpdateCoins), 1f);
     }
 
 }

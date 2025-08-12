@@ -1016,9 +1016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowAppOpen: 1
   sceneName: MainMenu
-  timeToLoadAppOpen: 2
+  timeToLoadAppOpen: 5
   timeToShowAppOpen: 8
-  timeToLoadNextScene: 9
+  timeToLoadNextScene: 10
 --- !u!1 &1768513767
 GameObject:
   m_ObjectHideFlags: 0
@@ -15900,7 +15900,7 @@ MonoBehaviour:
   - ca-app-pub-7170209482972029/8215130424
   ADMOB_AppOpen_ID_Test: ca-app-pub-3940256099942544/9257395921
   _AppOpen_Active: 0
-  _AppOpen_Load: 2
+  _AppOpen_Load: 1
   ForeGroundedAD: 0
   AppOpenHighText: {fileID: 6994886131147510898}
   AppOpenMedText: {fileID: 6994886131147510898}

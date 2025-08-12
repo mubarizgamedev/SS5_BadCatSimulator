@@ -20,7 +20,7 @@ public class AppOpenManager : MonoBehaviour
     public string ADMOB_AppOpen_ID_Test = "ca-app-pub-3940256099942544/9257395921";
     // Load
     public bool _AppOpen_Active;
-    public float _AppOpen_Load = 4f;
+    public float _AppOpen_Load ;
     public bool ForeGroundedAD;
     public Text AppOpenHighText, AppOpenMedText, AppOpenLowText;
 

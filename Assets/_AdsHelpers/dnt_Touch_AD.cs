@@ -18,7 +18,6 @@ public class dnt_Touch_AD : MonoBehaviour
     void OnEnable()
     {
         gc_Off();
-        cc();
     }
 
     void OnDisable()
@@ -26,16 +25,21 @@ public class dnt_Touch_AD : MonoBehaviour
         CancelInvoke();
     }
 
-    void cc()
-    {
-        //Debug.Log("Counter Coin__" + coins);
-        coins = PlayerPrefs.GetInt("TotalCoins");
-        Invoke("cc", 1f);
-    }
-
+    
     void gc_On()
     {
         GO_Coin.SetActive(true);
+        Debug.Log("GameObjects is on ");
+
+        Invoke(nameof(DisplayCoins), 2f);
+    }
+
+    void DisplayCoins()
+    {
+        int prevCoins = PlayerPrefs.GetInt("MyCoins", 0);
+        prevCoins += coins;
+        Debug.Log("Coins = " + prevCoins);
+        PlayerPrefs.SetInt("MyCoins", prevCoins);
     }
 
     void gc_Off()
@@ -63,6 +67,8 @@ public class dnt_Touch_AD : MonoBehaviour
         if (Time_Current >= Time_Maxi)
         {
             Debug.Log("Counter = Done");
+            gc_On();
+            re_set();
             CancelInvoke("Counter");
             Get_Coins();
         }
@@ -141,10 +147,12 @@ public class dnt_Touch_AD : MonoBehaviour
         }
         Debug.Log("Counter = Reward AD");
 
-        PlayerPrefs.SetInt("TotalCoins", PlayerPrefs.GetInt("TotalCoins") + 1000);
+        PlayerPrefs.SetInt("MyCoins", PlayerPrefs.GetInt("MyCoins") + 1000);
         
         //Data.SaveData();
         re_set();
         gc_On();
+
+        AdmobAdsManager.Instance.Btn_Reward_Done("");
     }
 }

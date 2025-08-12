@@ -328,8 +328,11 @@ public class EnemyHandler : MonoBehaviour
         {
             m_Agent.ResetPath();
         }
-        
-        m_Agent.isStopped = false;
+        if (m_Agent.enabled)
+        {
+            m_Agent.isStopped = false;
+        }
+
         m_Animator.SetBool("Attack", false);
         m_Animator.SetBool("Wander", true);
     }

@@ -36,21 +36,37 @@ public class SpecialManager : MonoBehaviour
 
     public void OnShockButtonPressed()
     {
-        currentRewardPanel.SetActive(true);
+        InterstitialAdCall.Instance.StartLoading(() =>
+        {
+            currentRewardPanel.SetActive(true);
+        });
+        
     }
 
     public void OnPunchButtonPressed()
     {
-        boxingRewardPanel.SetActive(true);
+        InterstitialAdCall.Instance.StartLoading(() =>
+        {
+            boxingRewardPanel.SetActive(true);
+        });
+        
     }
 
     public void OnFireButtonPressed()
     {
-        fireRewardPanel.SetActive(true);
+        InterstitialAdCall.Instance.StartLoading(() =>
+        {
+            fireRewardPanel.SetActive(true);
+        });
+        
     }
     public void OnBeeButtonPressed()
     {
-        beeRewardPanel.SetActive(true);
+        InterstitialAdCall.Instance.StartLoading(() =>
+        {
+            beeRewardPanel.SetActive(true);
+        });
+        
     }
 
 
