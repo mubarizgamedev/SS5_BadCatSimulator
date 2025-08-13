@@ -365,7 +365,8 @@ public class GameAppManager : MonoBehaviour, IStoreListener
     }
 
     void InAppPurchased()
-    { 
+    {
+        if (AdmobAdsManager.Instance)
             AdmobAdsManager.Instance.Btn_InApp_Done();
     }
 

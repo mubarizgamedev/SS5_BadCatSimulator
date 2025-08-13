@@ -8,16 +8,19 @@ public class CatTextures : MonoBehaviour
     [Header("First Pet")]
     public Material firstPetMaterial;
     public Button[] texturePet1ChangingButtons;
+    public Texture defaultTexturePet1;
     public Texture[] pet1Textures;
     [Space(5)]
     [Header("Second Pet")]
     public Material secondPetMaterial;
     public Button[] texturePet2ChangingButtons;
+    public Texture defaultTexturePet2;
     public Texture[] pet2Textures;
     [Space(5)]
     [Header("Third Pet")]
     public Material thirdPetMaterial;
     public Button[] texturePet3ChangingButtons;
+    public Texture defaultTexturePet3;
     public Texture[] pet3Textures;
 
 
@@ -26,24 +29,53 @@ public class CatTextures : MonoBehaviour
         for (int i = 0; i < texturePet1ChangingButtons.Length; i++)
         {
             int index = i; // Capture the current index
-            texturePet1ChangingButtons[i].onClick.AddListener(() => ChangePet1Texture(index));
+            texturePet1ChangingButtons[i].onClick.AddListener(() =>  InterstitialAdCall.Instance.StartLoading(()=>  ChangePet1Texture(index)));
         }
         for (int i = 0; i < texturePet2ChangingButtons.Length; i++)
         {
             int index = i; // Capture the current index
-            texturePet2ChangingButtons[i].onClick.AddListener(() => ChangePet2Texture(index));
+            texturePet2ChangingButtons[i].onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(()=> ChangePet2Texture(index)));
         }
         for (int i = 0; i < texturePet3ChangingButtons.Length; i++)
         {
             int index = i; // Capture the current index
-            texturePet3ChangingButtons[i].onClick.AddListener(() => ChangePet3Texture(index));
+            texturePet3ChangingButtons[i].onClick.AddListener(() => InterstitialAdCall.Instance.StartLoading(() => ChangePet3Texture(index)));
+        }
+    }
+
+    private void OnEnable()
+    {
+        // Set default textures when the script is enabled
+        if (firstPetMaterial != null && defaultTexturePet1 != null)
+        {
+            firstPetMaterial.mainTexture = defaultTexturePet1;
+            firstPetMaterial.SetTexture("_EmissionMap", defaultTexturePet1);
+            firstPetMaterial.EnableKeyword("_EMISSION");
         }
 
+        if (secondPetMaterial != null && defaultTexturePet2 != null)
+        {
+            secondPetMaterial.mainTexture = defaultTexturePet2;
+            secondPetMaterial.SetTexture("_EmissionMap", defaultTexturePet2);
+            secondPetMaterial.EnableKeyword("_EMISSION");
+        }
 
+        if (thirdPetMaterial != null && defaultTexturePet3 != null)
+        {
+            thirdPetMaterial.mainTexture = defaultTexturePet3;
+            thirdPetMaterial.SetTexture("_EmissionMap", defaultTexturePet3);
+            thirdPetMaterial.EnableKeyword("_EMISSION");
+        }
     }
 
     private void ChangePet1Texture(int index)
     {
+
+        foreach (var button in texturePet1ChangingButtons)
+        {
+            GreenSelector greenSelector = button.GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(false);
+        }
         if (index >= 0 && index < pet1Textures.Length)
         {
             firstPetMaterial.mainTexture = pet1Textures[index];
@@ -53,6 +85,9 @@ public class CatTextures : MonoBehaviour
 
             // If you want the emission to actually be visible, ensure it's enabled
             firstPetMaterial.EnableKeyword("_EMISSION");
+
+            GreenSelector greenSelector = texturePet1ChangingButtons[index].GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(true);
         }
         else
         {
@@ -62,6 +97,11 @@ public class CatTextures : MonoBehaviour
 
     private void ChangePet2Texture(int index)
     {
+        foreach (var button in texturePet2ChangingButtons)
+        {
+            GreenSelector greenSelector = button.GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(false);
+        }
         if (index >= 0 && index < pet2Textures.Length)
         {
             secondPetMaterial.mainTexture = pet2Textures[index];
@@ -71,6 +111,9 @@ public class CatTextures : MonoBehaviour
 
             // If you want the emission to actually be visible, ensure it's enabled
             secondPetMaterial.EnableKeyword("_EMISSION");
+
+            GreenSelector greenSelector = texturePet2ChangingButtons[index].GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(true);
         }
         else
         {
@@ -80,6 +123,11 @@ public class CatTextures : MonoBehaviour
 
     private void ChangePet3Texture(int index)
     {
+        foreach (var button in texturePet3ChangingButtons)
+        {
+            GreenSelector greenSelector = button.GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(false);
+        }
         if (index >= 0 && index < pet3Textures.Length)
         {
             thirdPetMaterial.mainTexture = pet3Textures[index];
@@ -89,6 +137,9 @@ public class CatTextures : MonoBehaviour
 
             // If you want the emission to actually be visible, ensure it's enabled
             thirdPetMaterial.EnableKeyword("_EMISSION");
+
+            GreenSelector greenSelector = texturePet3ChangingButtons[index].GetComponent<GreenSelector>();
+            greenSelector.ChangeActiveState(true);
         }
         else
         {

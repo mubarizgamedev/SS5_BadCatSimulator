@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CatHandInteractUI : MonoBehaviour
 {
+    public bool showCatHand;
     public GameObject catHandPrefab; // assign the prefab in Inspector
     public Canvas canvas;            // reference to your UI Canvas
     public float destroyDelay = 0.5f;
@@ -14,6 +15,7 @@ public class CatHandInteractUI : MonoBehaviour
     }
     void Update()
     {
+        if (!showCatHand) return;
         if (Input.GetMouseButtonDown(0) && canInstantitate)
         {
             Vector2 screenPos = Input.mousePosition;

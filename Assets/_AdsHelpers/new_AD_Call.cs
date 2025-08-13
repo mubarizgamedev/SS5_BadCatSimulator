@@ -40,6 +40,7 @@ public class new_AD_Call : MonoBehaviour
         }
         if (MedRec == true)
         {
+            if(AdmobAdsManager.Instance)
             if (AdmobAdsManager.Instance.Skip_MedRec)
             {
                 return;

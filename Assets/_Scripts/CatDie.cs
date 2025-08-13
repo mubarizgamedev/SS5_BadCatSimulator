@@ -8,6 +8,7 @@ public class CatDie : MonoBehaviour
     public float disableAfterDie;
     public void ChangeState()
     {
+        Debug.Log("Cat State Changed to Die");
         catAnimator.SetBool("Die", true);
     }
 
