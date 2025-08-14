@@ -159,7 +159,7 @@ public class GameAppManager : MonoBehaviour, IStoreListener
     public void Buy_Product(int iapID)
     {
         if(AdmobAdsManager.Instance)
-        AdmobAdsManager.Instance.IAP_Chk = true;
+        AdmobAdsManager.Instance.IAP_Click = true;
 
         if (IsInitialized())
         {
@@ -291,7 +291,7 @@ public class GameAppManager : MonoBehaviour, IStoreListener
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             PlayerPrefs.SetInt("noADS", 1);
-            AdmobAdsManager.Instance.Skip_Appopen = true;
+            AdmobAdsManager.Instance.Skip_AppOpen = true;
             AdmobAdsManager.Instance.Skip_Banner_Top = true;
             AdmobAdsManager.Instance.Skip_MedRec= true;
             Debug.Log("Removed all ads");
@@ -322,7 +322,7 @@ public class GameAppManager : MonoBehaviour, IStoreListener
             PlayerPrefs.SetInt("CatUnlocked_" + 2, 1);
             PlayerPrefs.SetInt("GrannyUnlocked_" + 1, 1);
             PlayerPrefs.SetInt("GrannyUnlocked_" + 2, 1);
-            AdmobAdsManager.Instance.Skip_Appopen = true;
+            AdmobAdsManager.Instance.Skip_AppOpen = true;
             AdmobAdsManager.Instance.Skip_Banner_Top = true;
             AdmobAdsManager.Instance.Skip_MedRec = true;
             PlayerPrefs.SetInt("noADS", 1);
@@ -367,7 +367,7 @@ public class GameAppManager : MonoBehaviour, IStoreListener
     void InAppPurchased()
     {
         if (AdmobAdsManager.Instance)
-            AdmobAdsManager.Instance.Btn_InApp_Done();
+            AdmobAdsManager.Instance.Btn_InApp_Done_Reload();
     }
 
     void LoadScene()

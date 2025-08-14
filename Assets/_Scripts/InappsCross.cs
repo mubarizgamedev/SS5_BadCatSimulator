@@ -15,11 +15,20 @@ public class InappsCross : MonoBehaviour
     public SpecialAttack_PopUp SpecialAttack_PopUp;
     public GameObject[] specialAttacksPanels;
 
+    [Space(5)]
+    [Header("Special Attacks Cross")]
+    public Button[] specialAttackCrosButtons;
+
 
     private void Start()
     {
         btnInappCross.onClick.AddListener(OnInappCrossButtonClicked);
         btnInappCross2.onClick.AddListener(OnInappCrossButtonClicked);
+
+        foreach (Button button in specialAttackCrosButtons)
+        {
+            button.onClick.AddListener(SpecialAttackCrossPressed);
+        }
     }
 
     void OnInappCrossButtonClicked()
@@ -41,7 +50,13 @@ public class InappsCross : MonoBehaviour
         foreach (GameObject panel in specialAttacksPanels)
         {
             panel.SetActive(false);
-            SpecialAttack_PopUp.ResetSpeacialTimer();
+
         }
+    }
+
+    void SpecialAttackCrossPressed()
+    {
+        DisableAllPanels();
+        SpecialAttack_PopUp.ResetSpeacialTimer();
     }
 }

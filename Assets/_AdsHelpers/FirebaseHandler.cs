@@ -9,8 +9,12 @@
 
     public class FirebaseHandler : MonoBehaviour
     {
-        DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
+        [Header("Timer // Active")]
+        public float FB_Timer;
+        public bool FB_Active;
+
         protected bool firebaseInitialized = false;
+        DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
 
         void Start()
         {
@@ -19,23 +23,21 @@
                 dependencyStatus = task.Result;
                 if (dependencyStatus == DependencyStatus.Available)
                 {
-                    Invoke("wait", 1f);
+                    Invoke("wait", FB_Timer);
                 }
                 else
                 {
+
                 }
             });
         }
+
         void wait()
         {
             FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
             firebaseInitialized = true;
-
-            // AdmobAdsManager.Instance.Test_Ads = true;
-            AdmobAdsManager.Instance.Internet = true;
+            FB_Active = true;
             AdmobAdsManager.Instance.Check_Firebase = true;
-            AdmobAdsManager.Instance.Ads_Purchase = true;
-            AdmobAdsManager.Instance.GDRP = true;
         }
     }
 }

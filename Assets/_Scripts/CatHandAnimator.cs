@@ -104,6 +104,7 @@ public class CatHandAnimator : MonoBehaviour
     public void EnableScratchUi()
     {
         scratchUiCat.SetActive(true);
+        SFX_Manager.PlaySound(SFX_Manager.Instance.scratchSound, 1f);
         Invoke(nameof(DisableScratchUi), timeToDisableScratchUi);
     }
 

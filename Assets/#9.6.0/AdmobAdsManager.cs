@@ -10,8 +10,8 @@ using GoogleMobileAds.Common;
 using GoogleMobileAds.Ump;
 using GoogleMobileAds.Ump.Api;
 
-//using GoogleMobileAds.Api.Mediation.AppLovin;  // for AppLovined
-//using GoogleMobileAds.Api.Mediation.Vungle;    // for LiftOff ( Vungle )
+//using GoogleMobileAds.Api.Mediation.AppLovin;    // for AppLovin
+//using GoogleMobileAds.Api.Mediation.Vungle;      // for LiftOff ( Vungle )
 //using Facebook.Unity;                          // for Meta
 //using GameAnalyticsSDK;                        // for Meta
 //using GoogleMobileAds.Api.Mediation.Pangle;    // for Pangle
@@ -21,176 +21,213 @@ using GoogleMobileAds.Ump.Api;
 [Serializable]
 public class AdmobId
 {
-    public string ADMOB_APP_ID;
+    [Space(10)]
+    public string ADMOB_APP_ID = "Use_Orignal";
 
+    [Space(10)]
+    // App Open
+    public bool
+        Appopen_Allow;
+
+    public bool
+        Appopen_Use_1_Id;
+
+    public string
+        ADMOB_APP_OPEN_AD_ID = "ca-app-pub-3940256099942544/9257395921";
+
+    public bool
+       Appopen_Use_3_Id;
+
+    [Space(10)]
     // Top
     public bool
         Top_Allow;
 
     public bool
-       Top_Adp_Smart;
+        Top_Adp_Small;
 
     public AdPosition
-        Top_Pos = AdPosition.Top;
+        Top_Pos = AdPosition.TopLeft;
 
     public string
-        ADMOB_BANNER_AD_ID_Top;
+        ADMOB_BANNER_AD_ID_Top = "ca-app-pub-3940256099942544/6300978111";
 
+    [Space(10)]
+    // Custom Small CR
+    public bool
+        Small_CR_Allow;
+
+    public bool
+        Small_CR_Fixed_Change;
+
+    public bool
+       Small_CR_Small_Adap;
+
+    public AdPosition
+        Small_CR_Pos = AdPosition.TopRight;
+
+    public string
+        ADMOB_BANNER_AD_ID_Small_CR = "ca-app-pub-3940256099942544/6300978111";
+
+    [Space(10)]
+    // Bottom
+    public bool
+        Bottom_Allow;
+
+    public AdPosition
+        Bottom_Pos = AdPosition.Bottom;
+
+    public string
+        ADMOB_BANNER_AD_ID_Bottom = "ca-app-pub-3940256099942544/6300978111";
+
+    [Space]
     // MidRec
     public bool
         MedBan_Allow;
 
     public AdPosition
-        MedBan_Pos = AdPosition.BottomLeft;
+        MedBan_Pos = AdPosition.Center;
 
     public string
-        ADMOB_MEDIUMBANNER_AD_ID;
+        ADMOB_MEDIUMBANNER_AD_ID = "ca-app-pub-3940256099942544/6300978111";
 
-    // Small CR
-    public bool
-        Small_CR_Allow;
-
-    public bool
-       Small_CR_Fixed_Change;
-
-    public AdPosition
-       Small_CR_Pos = AdPosition.BottomRight;
-
-    public string
-        ADMOB_BANNER_AD_ID_Small_CR;
-
-    // Bottom
-    public bool
-       Bottom_Allow;
-
-    public AdPosition
-       Bottom_Pos = AdPosition.Bottom;
-
-    public string
-        ADMOB_BANNER_AD_ID_Bottom;
-
-    // App Open
-    public bool
-        Appopen_Allow,
-        Appopen_Use_1_Id,
-        Appopen_Use_3_Id;
-
-    public string
-        ADMOB_APP_OPEN_AD_ID;
-
+    [Space(10)]
     // Int
     public bool
         Int_Allow;
 
     public string
-       ADMOB_INTERTITIAL_AD_ID;
+        ADMOB_INTERTITIAL_AD_ID = "ca-app-pub-3940256099942544/1033173712";
 
+    [Space(10)]
     // Rew
     public bool
         Rew_Allow;
 
     public string
-        ADMOB_REWARDED_AD_ID;
+        ADMOB_REWARDED_AD_ID = "Use_Orignal";
 }
 
 public class AdmobAdsManager : MediationHandler
 {
     public static AdmobAdsManager Instance;
 
-    [Header("Test // Live")]
-    public bool ID_Live;
-    public bool ID_Single;
+    [Header("Test // Original")]
     public bool ID_Test;
 
-    [Header("Print")]
-    public bool Unity_Logger;
+    [Header("Ready For Live")]
+    public bool ID_Live;
+    public bool ID_Single;
 
-    [Header("Never_Sleep")]
+    [Header("Never Sleep")]
     public bool Never_Sleep;
 
+    [Header("FPS")]
+    public bool FPS;
+    public int FPS_Current;
+
+    [Header("Print // Debug")]
+    public bool Unity_Logger;
+
+    [Header("Fire Base")]
+    public bool Check_Firebase;
+    public bool FB_Chk;
+    public float FB_Timer;
+    public string FB_Line;
+
+    [Header("Ads // Remove")]
+    public bool Skip_IAP_RemoveAds;
+
     [Header("Ads // Skip")]
-    public bool Skip_Appopen;
+    public bool Skip_AppOpen;
     public bool Skip_Banner_Top;
     public bool Skip_Banner_B_Small;
     public bool Skip_Banner_B_Adp;
     public bool Skip_MedRec;
+
+    [Header("Ads // Allow")]
     public bool Skip_Int;
     public bool Skip_Rew;
 
-    [Header("FireBase")]
-    public bool FB_Chk;
-    public float FB_Timer = 4f;
-    public string FB_Line;
-
     [Header("InApp")]
-    public bool IAP_Chk;
+    public bool Check_IAP;
     public bool IAP_Click;
     public bool IAP_Allow_Int_Rew;
     public static bool ForeGroundedAD;
 
-    [Header("Other")]
-    public bool Internet;
-    public bool Check_Firebase;
-    public bool Ads_Purchase;
-    public bool GDRP;
+    [Header("ConsentForm GDRP")]
+    public bool Check_GDRP;
     public bool _Name;
-    public bool UAD;
+    ConsentForm _consentForm;
 
-    [Header("Pannel")]
-    public GameObject CoinsShow;
-    public float _Reward_Timer;
+    [Header("Internet")]
+    public bool Internet;
+    public GameObject _Internet;
+
+    [Header("Acknowledgement")]
+    public float _Pannel_Timer;
     public GameObject _Reward_On;
     public Text _Reward_Text;
-    public GameObject _InApp_On;
-    public GameObject _AppOpen_On;
-    public GameObject _Internet;
-    public GameObject RewardLoadingPanel;
-    public GameObject AppOpenLoading;
+    public GameObject _InApp_Done;
+    public GameObject _InApp_Restore;
 
-    [Header("ID's")]
+    [Header("Extra")]
+    public GameObject CoinsShow;
+    public GameObject _AppOpen_Black;
+    public GameObject Reward_Loading;
+    public GameObject AppOpen_Loading;
+
+    [Header("Max")]
     public bool Ads_Googel_Max;
     public string Max_Sdk;
 
-    public AdmobId AndroidAdmob_ID = new AdmobId();
-    public AdmobId IosAdmob_ID = new AdmobId();
-    public AdmobId TestAdmob_ID = new AdmobId();
+    [Header("Medi")]
+    public bool Ads_Googel_AppLovin;
+    public bool Ads_Googel_LiftOff_Vungle;
+    public bool Ads_Googel_Meta_Facebook;
+    public bool Ads_Googel_Mintegral;
+    public bool Ads_Googel_Pangle;
+    public bool Ads_Googel_Unity;
+
+    [Header("Google")]
+    public AdmobId Test_ID = new AdmobId();
+    public AdmobId Android_ID = new AdmobId();
+    public AdmobId IOS_ID = new AdmobId();
 
     [HideInInspector]
     public AdmobId ADMOB_ID = new AdmobId();
 
-    public GameObject[] CPMRec, CPInterstitial;
-    public GameObject[] CPSmallBanner;
+    [Header("Cross Permotion")]
+    public GameObject[] CP_AppOpen_Banner;
+    public GameObject[] CP_Top_Banner, CP_Small_CR_Banner, CP_Bottom_Banner, CP_MedBan_Banner, CP_Interstitial, CP_Reward;
+
+    [Header("End")]
+    public bool End;
 
     bool isAdmobInitialized = false;
     bool trytoInitializeOnceMore = true;
     // bool  IsAppOpenAdAvailable=false;
-
     private int CP_SM_lastShownIndex = -1;
     private bool isCP_SM_Showing = false;
     private int CP_MRec_lastShownIndex = -1;
     private bool isCP_MRec_Showing = false;
     private int CP_Interstitial_lastShownIndex = -1;
     private static RewardUserDelegate NotifyReward;
-    ConsentForm _consentForm;
 
     void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+
         GetGDPR_Consent();
+
         if (SystemInfo.systemMemorySize > 1200)
         {
-            //Toolbox.GameManager.Analytics_DesignEvent("MEM_GR_1024_ADS_SHOW");
             Debug.Log("GG >> System Memory is greater than 1024, Showing Ads- Memory Size_" + SystemInfo.systemMemorySize);
             if (SystemInfo.systemMemorySize < 2048)
             {
 
             }
-            //if (SystemInfo.systemMemorySize <= 4096)
-            //    QualitySettings.SetQualityLevel(1);
-            //else
-            //    QualitySettings.SetQualityLevel(2);
-
             Interstitial_Loaded = false;
             isSmallBannerLoaded = false;
             isMediumBannerLoaded = false;
@@ -201,41 +238,66 @@ public class AdmobAdsManager : MediationHandler
         else
         {
             Debug.Log("GG >> System Memory is less than or equal to 1024, Not Showing Ads");
-            // PlayerPrefs.SetInt("RemoveAds", 1);
-            //QualitySettings.SetQualityLevel(0);
         }
+
+        Btn_Name();
 
         if (ID_Test == true)
         {
-            ADMOB_ID = TestAdmob_ID;
+            ADMOB_ID = Test_ID;
         }
         else
         {
 #if UNITY_ANDROID
-            ADMOB_ID = AndroidAdmob_ID;
+            ADMOB_ID = Android_ID;
 #elif UNITY_IOS
-        ADMOB_ID = IosAndroid_ID;
+        ADMOB_ID = IOS_ID;
 #endif
         }
 
-        Btn_Name();
+        Invoke(nameof(Btn_Allow_ADs), 0.9f);
+        Invoke(nameof(Btn_Remove_ADs), 1.1f);
     }
-
+    public void Btn_Allow_ADs()
+    {
+        if (PlayerPrefs.GetInt("RemoveAds") == 0)
+        {
+            Skip_IAP_RemoveAds = Skip_AppOpen = Skip_Banner_Top = Skip_Banner_B_Small = Skip_MedRec = false; // Skip_Banner_B_Adp
+            Btn_Allow_AppOpen();
+        }
+    }
+    public void Btn_Remove_ADs()
+    {
+        if (PlayerPrefs.GetInt("RemoveAds") == 1)
+        {
+            Skip_IAP_RemoveAds = Skip_AppOpen = Skip_Banner_Top = Skip_Banner_B_Small = Skip_MedRec = true; // Skip_Banner_B_Adp
+            Btn_Skip_AppOpen();
+        }
+    }
     void OnEnable()
     {
+        if (Never_Sleep == true)
+        {
+            print("GAM_Never_Sleep");
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        }
+        if (FPS == true)
+        {
+            print("GAM_FPS");
+            Application.targetFrameRate = -1;
+            Application.targetFrameRate = FPS_Current;
+        }
+
+        Invoke(nameof(Btn_FireBase), FB_Timer);
         if (Unity_Logger == true)
         {
             Debug.unityLogger.logEnabled = false;
+            print("GAM_Unity_Logger_Yes");
         }
         else
         {
             Debug.unityLogger.logEnabled = true;
-        }
-
-        Invoke(nameof(Btn_FireBase), FB_Timer);
-        if (Never_Sleep == true)
-        {
-            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            print("GAM_Unity_Logger_No");
         }
     }
     void Btn_FireBase()
@@ -243,7 +305,7 @@ public class AdmobAdsManager : MediationHandler
         if (FB_Chk == true)
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent(FB_Line);
-            //print("FB:=>" + FB_Line);
+            print("GAM:FB:=>" + FB_Line);
         }
     }
 
@@ -272,54 +334,75 @@ public class AdmobAdsManager : MediationHandler
             Debug.LogWarning("Internet == No");
         }
     }
+    // Off
+    void Btn_Off_Other()
+    {
+        _Reward_On.SetActive(false);
+        _InApp_Done.SetActive(false);
+        _InApp_Restore.SetActive(false);
+        _AppOpen_Black.SetActive(false);
+    }
+    // Reward
     public void Btn_Reward_Done(string xXx)
     {
         _Reward_Text.text = (xXx).ToString();
         _Reward_On.SetActive(true);
-        Invoke(nameof(Btn_Off_Other), _Reward_Timer);
+        Invoke(nameof(Btn_Off_Other), _Pannel_Timer);
     }
-    void Btn_Off_Other()
+    // InApp Restore Reload
+    public void Btn_InApp_Restore_Reload()
     {
-        _Reward_On.SetActive(false);
-        _InApp_On.SetActive(false);
-        _AppOpen_On.SetActive(false);
+        _InApp_Restore.SetActive(true);
+        Btn_Allow_ADs();
+        Invoke(nameof(_reload), _Pannel_Timer);
     }
-    public void Btn_InApp_Done()
+    // InApp Restore Game
+    public void Btn_InApp_Restore_Game()
     {
-        _InApp_On.SetActive(true);
-        Invoke(nameof(_reload), _Reward_Timer);
+        _InApp_Restore.SetActive(true);
+        Btn_Allow_ADs();
+        Invoke(nameof(Btn_Off_Other), _Pannel_Timer);
     }
-    void _reload()
+    // InApp Done Reload
+    public void Btn_InApp_Done_Reload()
     {
-        _InApp_On.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _InApp_Done.SetActive(true);
+        Invoke(nameof(_reload), _Pannel_Timer);
     }
+    // InApp Done Game
     public void Btn_InApp_Done_Game()
     {
-        _InApp_On.SetActive(true);
-        Invoke(nameof(_reload_Game), _Reward_Timer);
+        _InApp_Done.SetActive(true);
+        Invoke(nameof(Btn_Off_Other), _Pannel_Timer);
     }
-    void _reload_Game()
+    // Reload
+    void _reload()
     {
-        _InApp_On.SetActive(false);
+        Btn_Off_Other();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void Btn_AppOpen_Start()
     {
-        _AppOpen_On.SetActive(false);
+        _AppOpen_Black.SetActive(true);
     }
     public void Btn_AppOpen_End()
     {
-        _AppOpen_On.SetActive(false);
+        _AppOpen_Black.SetActive(false);
     }
     public void Btn_Skip_AppOpen()
     {
-        Skip_Appopen = true;
-        AppOpenManager.Instance.Skip_Appopen = true;
+        Skip_AppOpen = true;
+        AppOpenManager.Instance.Skip_AppOpen = true;
+    }
+    public void Btn_Allow_AppOpen()
+    {
+        Skip_AppOpen = false;
+        AppOpenManager.Instance.Skip_AppOpen = false;
     }
     public void Btn_Skip_Ads_AppOpen()
     {
-        Skip_Appopen = true;
-        AppOpenManager.Instance.Skip_Appopen = false;
+        Skip_AppOpen = true;
+        AppOpenManager.Instance.Skip_AppOpen = true;
     }
     void Btn_App_Open_Check()
     {
@@ -345,16 +428,26 @@ public class AdmobAdsManager : MediationHandler
     }
     public void Btn_App_Show()
     {
-        IAP_Click = false;
-        Btn_AppOpen_Start();
-        if (ADMOB_ID.Appopen_Allow == true)
+        if (IAP_Click == true)
         {
-            ShowAppOpenAd();
+            return;
         }
         else
         {
-            AppOpenManager.Instance.Btn_App_Show();
-        }
+            Btn_AppOpen_Start();
+            if (ADMOB_ID.Appopen_Allow == true)
+            {
+                ShowAppOpenAd();
+            }
+            else
+            {
+                AppOpenManager.Instance.Btn_App_Show();
+            }
+        } 
+    }
+    public void Btn_IAP_Click_AD(bool xXx)
+    {
+        IAP_Click = xXx;
     }
     #region InterstialAds
 
@@ -459,9 +552,9 @@ public class AdmobAdsManager : MediationHandler
                     if (appopenLoaded)
                     {
                         Btn_App_Show();
-                        if (IAP_Chk == true)
+                        if (IAP_Click == true)
                         {
-                            IAP_Chk = false;
+                            Btn_IAP_Click_AD(false);
                         }
                     }
                     else
@@ -566,7 +659,7 @@ public class AdmobAdsManager : MediationHandler
             first_load();
         }
 
-        // Applovin
+        //// Applovin
         //else if (AdapterClassname.Contains("Applovin")) // Applovin
         //{
         //    AppLovin.SetHasUserConsent(true);
@@ -624,7 +717,7 @@ public class AdmobAdsManager : MediationHandler
         }
         else
         {
-            _Name = true;
+            _Name = false;
         }
     }
     public void ShowRewardVideo2x(bool ShowMediumBannerAfterVideo)
@@ -632,12 +725,12 @@ public class AdmobAdsManager : MediationHandler
         if (ShowMediumBannerAfterVideo)
         {
             hideMediumBanner();
-            RewardLoadingPanel.SetActive(true);
+            Reward_Loading.SetActive(true);
             Reward_Video_Loading.ShowMRECAfterVideo = true;
         }
         else
         {
-            RewardLoadingPanel.SetActive(true);
+            Reward_Loading.SetActive(false);
         }
     }
     public void CloseRewardVideoNotification()
@@ -743,10 +836,10 @@ public class AdmobAdsManager : MediationHandler
     }
     void chk_tb()
     {
-        if (ADMOB_ID.Top_Adp_Smart == true)
+        if (ADMOB_ID.Top_Adp_Small == true)
         {
-            AdSize adaptiveSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
-            this.SmallBanner = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Top, adaptiveSize, ADMOB_ID.Top_Pos);
+            AdSize adaptiveSize_tas = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+            this.SmallBanner = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Top, adaptiveSize_tas, ADMOB_ID.Top_Pos);
         }
         else
         {
@@ -786,7 +879,7 @@ public class AdmobAdsManager : MediationHandler
     }
     void chk_btn_sml()
     {
-        if (Skip_Banner_B_Small == true)
+        if (Skip_Banner_B_Small == true || !PreferenceManager.GetAdsStatus())
         {
             // No ADs
         }
@@ -891,7 +984,7 @@ public class AdmobAdsManager : MediationHandler
             }
             else
             {
-                if (!isAdmobInitialized || IsInterstitialAdReady() || iAdStatus == AdLoadingStatus.Loading || !PreferenceManager.GetAdsStatus() || !GRS_AdIDs.IfUseInetstitial || !GRS_AdIDs.IfUseInterinsidegameplay)
+                if (!isAdmobInitialized || IsInterstitialAdReady() || iAdStatus == AdLoadingStatus.Loading || !GRS_AdIDs.IfUseInetstitial || !GRS_AdIDs.IfUseInterinsidegameplay)
                 {
                     return;
                 }
@@ -1237,6 +1330,15 @@ public class AdmobAdsManager : MediationHandler
         else
             return false;
     }
+    public void RewardAdReadytoShow()
+    {
+        Debug.Log("RewardVideoReady");
+        if (Reward_Video_Loading.ins)
+        {
+            Debug.Log("RewardVideoReady///");
+            Reward_Video_Loading.ins.Loading_Time = .5f;
+        }
+    }
 
     #endregion
     #region Show Ads
@@ -1335,7 +1437,6 @@ public class AdmobAdsManager : MediationHandler
             {
                 if (xyz_int == 0)
                 {
-                    // !PreferenceManager.GetAdsStatus()
                     if (!isAdmobInitialized || !GRS_AdIDs.IfUseInetstitial || !GRS_AdIDs.IfUseInterinsidegameplay)
                     {
                         if (!isAdmobInitialized) { TryingtoInitializedAgain(); }
@@ -1372,7 +1473,6 @@ public class AdmobAdsManager : MediationHandler
                 {
                     if (_Name == true)
                     {
-                        // !PreferenceManager.GetAdsStatus()
                         if (!isAdmobInitialized || !GRS_AdIDs.IfUseInetstitial || !GRS_AdIDs.IfUseInterinsidegameplay)
                         {
                             if (!isAdmobInitialized) { TryingtoInitializedAgain(); }
@@ -1448,13 +1548,13 @@ public class AdmobAdsManager : MediationHandler
 
     public override void ShowAppOpenAd()
     {
-        if (Skip_Appopen == true)
+        if (Skip_AppOpen == true)
         {
             // No ADs
         }
         else
         {
-            if (!PreferenceManager.GetAdsStatus() || ADMOB_ID.Appopen_Allow == false || !isAdmobInitialized || IAP_Chk == true)
+            if (!PreferenceManager.GetAdsStatus() || ADMOB_ID.Appopen_Allow == false || !isAdmobInitialized)
             {
                 return;
             }
@@ -1663,36 +1763,17 @@ public class AdmobAdsManager : MediationHandler
 
     #region CrossPermotion Fun
 
-    public void ShowCrossPermotion_Interstitial()
-    {
-        if (GRS_AdIDs.UseCrossPermotion && PreferenceManager.GetAdsStatus())
-        {
-            if (CPInterstitial.Length == 0)
-            {
-                Logging.Log("No CP_Interstitial available.");
-                return;
-            }
-            HideAllBannersOn_CpInterstitial();
-            if (isCP_MRec_Showing) { isMRecShowing = false; }
-            if (isCP_SM_Showing) { isSmallBannerShowing = false; }
-            int nextIndex = (CP_Interstitial_lastShownIndex + 1) % CPInterstitial.Length;
-            CPInterstitial[nextIndex].SetActive(true);
-            CP_Interstitial_lastShownIndex = nextIndex;
-            Time.timeScale = 0;
-        }
-    }
-
     public void ShowCrossPermotion_SmallBanner()
     {
         if (GRS_AdIDs.UseCrossPermotion && PreferenceManager.GetAdsStatus())
         {
-            if (CPSmallBanner.Length == 0)
+            if (CP_Top_Banner.Length == 0)
             {
                 Logging.Log("No CP_SmallBanner available.");
                 return;
             }
-            int nextIndex = (CP_SM_lastShownIndex + 1) % CPSmallBanner.Length;
-            CPSmallBanner[nextIndex].SetActive(true);
+            int nextIndex = (CP_SM_lastShownIndex + 1) % CP_Top_Banner.Length;
+            CP_Top_Banner[nextIndex].SetActive(true);
             CP_SM_lastShownIndex = nextIndex;
             isCP_SM_Showing = true;
         }
@@ -1702,15 +1783,34 @@ public class AdmobAdsManager : MediationHandler
     {
         if (GRS_AdIDs.UseCrossPermotion && PreferenceManager.GetAdsStatus())
         {
-            if (CPMRec.Length == 0)
+            if (CP_MedBan_Banner.Length == 0)
             {
                 Logging.Log("No CP_MRec available.");
                 return;
             }
-            int nextIndex = (CP_MRec_lastShownIndex + 1) % CPMRec.Length;
-            CPMRec[nextIndex].SetActive(true);
+            int nextIndex = (CP_MRec_lastShownIndex + 1) % CP_MedBan_Banner.Length;
+            CP_MedBan_Banner[nextIndex].SetActive(true);
             CP_MRec_lastShownIndex = nextIndex;
             isCP_MRec_Showing = true;
+        }
+    }
+
+    public void ShowCrossPermotion_Interstitial()
+    {
+        if (GRS_AdIDs.UseCrossPermotion)
+        {
+            if (CP_Interstitial.Length == 0)
+            {
+                Logging.Log("No CP_Interstitial available.");
+                return;
+            }
+            HideAllBannersOn_CpInterstitial();
+            if (isCP_MRec_Showing) { isMRecShowing = false; }
+            if (isCP_SM_Showing) { isSmallBannerShowing = false; }
+            int nextIndex = (CP_Interstitial_lastShownIndex + 1) % CP_Interstitial.Length;
+            CP_Interstitial[nextIndex].SetActive(true);
+            CP_Interstitial_lastShownIndex = nextIndex;
+            Time.timeScale = 0;
         }
     }
 
@@ -1718,9 +1818,9 @@ public class AdmobAdsManager : MediationHandler
     {
         if (isCP_MRec_Showing)
         {
-            for (int i = 0; i < CPMRec.Length; i++)
+            for (int i = 0; i < CP_MedBan_Banner.Length; i++)
             {
-                CPMRec[i].SetActive(false);
+                CP_MedBan_Banner[i].SetActive(false);
             }
             isCP_MRec_Showing = false;
         }
@@ -1729,9 +1829,9 @@ public class AdmobAdsManager : MediationHandler
     {
         if (isCP_SM_Showing)
         {
-            for (int i = 0; i < CPSmallBanner.Length; i++)
+            for (int i = 0; i < CP_Top_Banner.Length; i++)
             {
-                CPSmallBanner[i].SetActive(false);
+                CP_Top_Banner[i].SetActive(false);
             }
             isCP_SM_Showing = false;
         }
@@ -1774,6 +1874,7 @@ public class AdmobAdsManager : MediationHandler
     #region Get GDRP Consent
     void GetGDPR_Consent()
     {
+        Check_GDRP = true;
         var debugSettings = new ConsentDebugSettings
         {
             DebugGeography = DebugGeography.EEA,
@@ -1856,15 +1957,6 @@ public class AdmobAdsManager : MediationHandler
 
     #endregion
 
-    public void RewardAdReadytoShow()
-    {
-        Debug.Log("RewardVideoReady");
-        if (Reward_Video_Loading.ins)
-        {
-            Debug.Log("RewardVideoReady///");
-            Reward_Video_Loading.ins.Loading_Time = .5f;
-        }
-    }
 
     // Banner Center Right
     public BannerView sb_bottom;
@@ -1881,7 +1973,7 @@ public class AdmobAdsManager : MediationHandler
             if (sb_bottom == null)
             {
                 Debug.Log("00000000000 Banner load start created.");
-                sb_bottom = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Small_CR, AdSize.Banner, ADMOB_ID.Small_CR_Pos);
+                chk_scr_s_a();
                 ar_bt = new AdRequest();
 
                 sb_bottom.LoadAd(ar_bt);
@@ -1898,16 +1990,16 @@ public class AdmobAdsManager : MediationHandler
     }
     void Btn_Create_Show() // ADMOB_BANNER_AD_ID_2
     {
-        if (ADMOB_ID.Small_CR_Allow == false)
+        if (ADMOB_ID.Small_CR_Allow == false || !PreferenceManager.GetAdsStatus())
         {
-            // Nothing
+            return;
         }
         else
         {
             if (sb_bottom == null) // Check if the banner is not already created
             {
                 Debug.Log("1111111111 Banner reload start created.");
-                sb_bottom = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Small_CR, AdSize.Banner, ADMOB_ID.Small_CR_Pos);
+                chk_scr_s_a();
                 ar_bt = new AdRequest();
                 sb_bottom.LoadAd(ar_bt);
 
@@ -1920,6 +2012,18 @@ public class AdmobAdsManager : MediationHandler
             }
         }
     }
+    void chk_scr_s_a()
+    {
+        if (ADMOB_ID.Small_CR_Small_Adap == true)
+        {
+            sb_bottom = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Small_CR, AdSize.Banner, ADMOB_ID.Small_CR_Pos);
+        }
+        else
+        {
+            AdSize adaptiveSize_sm = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
+            sb_bottom = new BannerView(ADMOB_ID.ADMOB_BANNER_AD_ID_Small_CR, adaptiveSize_sm, ADMOB_ID.Small_CR_Pos);
+        }
+    }
     public void Btn_Show_Bottom(AdPosition pos)
     {
         if (Skip_Banner_B_Small == true)
@@ -1928,9 +2032,9 @@ public class AdmobAdsManager : MediationHandler
         }
         else
         {
-            if (ADMOB_ID.Small_CR_Allow == false)
+            if (ADMOB_ID.Small_CR_Allow == false || !PreferenceManager.GetAdsStatus())
             {
-                // Nothing
+                return;
             }
             else
             {
@@ -1960,7 +2064,7 @@ public class AdmobAdsManager : MediationHandler
     {
         if (ADMOB_ID.Small_CR_Fixed_Change == true)
         {
-           // Nothing
+            // Nothing
         }
         else
         {

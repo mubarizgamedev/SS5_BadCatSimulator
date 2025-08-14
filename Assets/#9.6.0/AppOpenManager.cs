@@ -11,22 +11,32 @@ using GoogleMobileAds.Common;
 public class AppOpenManager : MonoBehaviour
 {
     public static AppOpenManager Instance;
+
+    [Header("Test // Original")]
     public bool Test_Ads;
-    public bool Skip_Appopen;
-    // ID
-    public bool Appopen_Allow;
+    public bool Skip_AppOpen;
+
+    [Header("Timer // Active")]
+    public float _AppOpen_Load;
+    public bool Appopen_Use_3_Id;
+
+    [Header("ID's")]
     public string ADMOB_APP_ID;
     public string[] ADMOB_AppOpen_ID;
     public string ADMOB_AppOpen_ID_Test = "ca-app-pub-3940256099942544/9257395921";
-    // Load
-    public bool _AppOpen_Active;
-    public float _AppOpen_Load ;
+
+    [Header("Text")]
+    public Text AppOpenHighText;
+    public Text AppOpenMedText, AppOpenLowText;
+
+    [Header("Other")]
+    public bool UAD;
     public bool ForeGroundedAD;
-    public Text AppOpenHighText, AppOpenMedText, AppOpenLowText;
 
     AppOpenAd HighAppOpen;
     AppOpenAd MedAppOpen;
     AppOpenAd LowAppOpen;
+
 
     bool isloadHighAppOpen;
     bool isloadMedAppOpen;
@@ -40,6 +50,7 @@ public class AppOpenManager : MonoBehaviour
     {
         Instance = this;
     }
+
     void OnEnable()
     {
         if (Test_Ads == false)
@@ -50,30 +61,48 @@ public class AppOpenManager : MonoBehaviour
         else
         {
             Debug.Log("App Open ID Test");
-            ADMOB_AppOpen_ID[0] = ADMOB_AppOpen_ID_Test;
-            ADMOB_AppOpen_ID[1] = ADMOB_AppOpen_ID_Test;
-            ADMOB_AppOpen_ID[2] = ADMOB_AppOpen_ID_Test;
+            ADMOB_AppOpen_ID[0] = ADMOB_AppOpen_ID[1] = ADMOB_AppOpen_ID[2] = ADMOB_AppOpen_ID_Test;
         }
         Invoke(nameof(LoadAllAppOpen), _AppOpen_Load);
     }
-    void Start()
-    {
 
-    }
     public void Btn_App_Load()
     {
-        LoadAllAppOpen();
+        if (PlayerPrefs.GetInt("RemoveAds") == 1)
+        {
+            // InApp Buy
+            Skip_AppOpen = true;
+        }
+        else
+        {
+            LoadAllAppOpen();
+        }
     }
     public void Btn_App_Show()
     {
-        if (Skip_Appopen == true)
+        if (Skip_AppOpen == true)
         {
             Logging.Log("AppOpen_Skip_All 3_ID's");
             // No ADs
         }
         else
         {
-            PrioritySettingAppOpen();
+            if (PlayerPrefs.GetInt("RemoveAds") == 1)
+            {
+                // InApp Buy
+                Skip_AppOpen = true;
+            }
+            else
+            {
+                if (AdmobAdsManager.Instance.IAP_Click == true)
+                {
+                    // Click IAP
+                }
+                else
+                {
+                    PrioritySettingAppOpen();
+                }
+            }
         }
     }
 
@@ -89,6 +118,10 @@ public class AppOpenManager : MonoBehaviour
             {
                 AdmobAdsManager.ForeGroundedAD = true;
                 Btn_App_Show();
+                if (AdmobAdsManager.Instance.IAP_Click == true)
+                {
+                    AdmobAdsManager.Instance.Btn_IAP_Click_AD(false);
+                }
                 Debug.Log("App Open Loading On Pause");
                 Invoke("LoadAllAppOpen", 1f);
             }
@@ -101,14 +134,14 @@ public class AppOpenManager : MonoBehaviour
 
     void LoadAllAppOpen()
     {
-        if (Skip_Appopen == true)
+        if (Skip_AppOpen == true)
         {
             Logging.Log("AppOpen_Skip_All 3_ID's");
             // No ADs
         }
         else
         {
-            _AppOpen_Active = true;
+            Appopen_Use_3_Id = true;
             Debug.Log("App Open Load Yes");
             Invoke(nameof(HighAppOpenLoadAd), 0f);
             Invoke(nameof(MedAppOpenLoadAd), 0.5f);

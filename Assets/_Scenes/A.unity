@@ -5336,140 +5336,157 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4c12be79df84e419ed25703750b5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID_Test: 0
   ID_Live: 1
   ID_Single: 1
-  ID_Test: 0
-  Unity_Logger: 1
   Never_Sleep: 1
-  Skip_Appopen: 0
+  FPS: 0
+  FPS_Current: 0
+  Unity_Logger: 1
+  Check_Firebase: 0
+  FB_Chk: 1
+  FB_Timer: 4
+  FB_Line: SSS_5
+  Skip_IAP_RemoveAds: 0
+  Skip_AppOpen: 0
   Skip_Banner_Top: 0
   Skip_Banner_B_Small: 0
   Skip_Banner_B_Adp: 1
   Skip_MedRec: 0
   Skip_Int: 0
   Skip_Rew: 0
-  FB_Chk: 1
-  FB_Timer: 4
-  FB_Line: SSS_5
-  IAP_Chk: 0
+  Check_IAP: 0
   IAP_Click: 0
   IAP_Allow_Int_Rew: 0
-  Internet: 0
-  Check_Firebase: 0
-  Ads_Purchase: 0
-  GDRP: 0
+  Check_GDRP: 0
   _Name: 0
-  UAD: 0
-  CoinsShow: {fileID: 2059910739886276838}
-  _Reward_Timer: 3
+  Internet: 0
+  _Internet: {fileID: 2336718275760134124}
+  _Pannel_Timer: 0
   _Reward_On: {fileID: 4029661356365783466}
   _Reward_Text: {fileID: 6994886131147510898}
-  _InApp_On: {fileID: 6645689541480731630}
-  _AppOpen_On: {fileID: 2059910739886276838}
-  _Internet: {fileID: 2336718275760134124}
-  RewardLoadingPanel: {fileID: 2059910739886276838}
-  AppOpenLoading: {fileID: 2059910739886276838}
-  Ads_Googel_Max: 0
-  Max_Sdk: 
-  AndroidAdmob_ID:
+  _InApp_Done: {fileID: 6645689541480731630}
+  _InApp_Restore: {fileID: 6645689541480731630}
+  CoinsShow: {fileID: 2059910739886276838}
+  _AppOpen_Black: {fileID: 2059910739886276838}
+  Reward_Loading: {fileID: 2059910739886276838}
+  AppOpen_Loading: {fileID: 2059910739886276838}
+  Ads_Googel_Max: 1
+  Max_Sdk: SnV0pI1HDgnfiRax03k5X9uaCbTrsKL2P19HNNqEZhwUMVrxZFZrQVdeD_HawBgL8t0nTfoSy4BPgzHdHCssN0
+  Ads_Googel_AppLovin: 0
+  Ads_Googel_LiftOff_Vungle: 0
+  Ads_Googel_Meta_Facebook: 0
+  Ads_Googel_Mintegral: 0
+  Ads_Googel_Pangle: 0
+  Ads_Googel_Unity: 0
+  Test_ID:
     ADMOB_APP_ID: ca-app-pub-7170209482972029~5780538775
-    Top_Allow: 1
-    Top_Adp_Smart: 0
-    Top_Pos: 2
-    ADMOB_BANNER_AD_ID_Top: ca-app-pub-7170209482972029/4657963135
-    MedBan_Allow: 1
-    MedBan_Pos: 4
-    ADMOB_MEDIUMBANNER_AD_ID: ca-app-pub-7170209482972029/1915678901
-    Small_CR_Allow: 1
-    Small_CR_Fixed_Change: 1
-    Small_CR_Pos: 3
-    ADMOB_BANNER_AD_ID_Small_CR: ca-app-pub-7170209482972029/2388088672
-    Bottom_Allow: 0
-    Bottom_Pos: 1
-    ADMOB_BANNER_AD_ID_Bottom: 
     Appopen_Allow: 0
     Appopen_Use_1_Id: 0
-    Appopen_Use_3_Id: 0
     ADMOB_APP_OPEN_AD_ID: 
-    Int_Allow: 1
-    ADMOB_INTERTITIAL_AD_ID: ca-app-pub-7170209482972029/1379681183
-    Rew_Allow: 1
-    ADMOB_REWARDED_AD_ID: ca-app-pub-7170209482972029/9469908287
-  IosAdmob_ID:
-    ADMOB_APP_ID: ca-app-pub-7170209482972029~5780538775
-    Top_Allow: 0
-    Top_Adp_Smart: 0
-    Top_Pos: 0
-    ADMOB_BANNER_AD_ID_Top: 
-    MedBan_Allow: 0
-    MedBan_Pos: 4
-    ADMOB_MEDIUMBANNER_AD_ID: 
-    Small_CR_Allow: 0
-    Small_CR_Fixed_Change: 0
-    Small_CR_Pos: 5
-    ADMOB_BANNER_AD_ID_Small_CR: 
-    Bottom_Allow: 0
-    Bottom_Pos: 1
-    ADMOB_BANNER_AD_ID_Bottom: 
-    Appopen_Allow: 0
-    Appopen_Use_1_Id: 0
-    Appopen_Use_3_Id: 0
-    ADMOB_APP_OPEN_AD_ID: 
-    Int_Allow: 0
-    ADMOB_INTERTITIAL_AD_ID: 
-    Rew_Allow: 0
-    ADMOB_REWARDED_AD_ID: 
-  TestAdmob_ID:
-    ADMOB_APP_ID: ca-app-pub-7170209482972029~5780538775
+    Appopen_Use_3_Id: 1
     Top_Allow: 1
-    Top_Adp_Smart: 0
+    Top_Adp_Small: 0
     Top_Pos: 2
     ADMOB_BANNER_AD_ID_Top: ca-app-pub-3940256099942544/6300978111
-    MedBan_Allow: 1
-    MedBan_Pos: 4
-    ADMOB_MEDIUMBANNER_AD_ID: ca-app-pub-3940256099942544/6300978111
     Small_CR_Allow: 1
     Small_CR_Fixed_Change: 1
+    Small_CR_Small_Adap: 1
     Small_CR_Pos: 3
     ADMOB_BANNER_AD_ID_Small_CR: ca-app-pub-3940256099942544/6300978111
     Bottom_Allow: 0
     Bottom_Pos: 1
     ADMOB_BANNER_AD_ID_Bottom: 
+    MedBan_Allow: 1
+    MedBan_Pos: 4
+    ADMOB_MEDIUMBANNER_AD_ID: ca-app-pub-3940256099942544/6300978111
+    Int_Allow: 0
+    ADMOB_INTERTITIAL_AD_ID: 
+    Rew_Allow: 0
+    ADMOB_REWARDED_AD_ID: 
+  Android_ID:
+    ADMOB_APP_ID: ca-app-pub-7170209482972029~5780538775
     Appopen_Allow: 0
     Appopen_Use_1_Id: 0
-    Appopen_Use_3_Id: 0
     ADMOB_APP_OPEN_AD_ID: 
+    Appopen_Use_3_Id: 1
+    Top_Allow: 1
+    Top_Adp_Small: 0
+    Top_Pos: 2
+    ADMOB_BANNER_AD_ID_Top: ca-app-pub-7170209482972029/4657963135
+    Small_CR_Allow: 1
+    Small_CR_Fixed_Change: 1
+    Small_CR_Small_Adap: 1
+    Small_CR_Pos: 3
+    ADMOB_BANNER_AD_ID_Small_CR: ca-app-pub-7170209482972029/2388088672
+    Bottom_Allow: 0
+    Bottom_Pos: 1
+    ADMOB_BANNER_AD_ID_Bottom: 
+    MedBan_Allow: 1
+    MedBan_Pos: 4
+    ADMOB_MEDIUMBANNER_AD_ID: ca-app-pub-7170209482972029/1915678901
+    Int_Allow: 0
+    ADMOB_INTERTITIAL_AD_ID: 
+    Rew_Allow: 0
+    ADMOB_REWARDED_AD_ID: 
+  IOS_ID:
+    ADMOB_APP_ID: Use_Orignal
+    Appopen_Allow: 0
+    Appopen_Use_1_Id: 0
+    ADMOB_APP_OPEN_AD_ID: ca-app-pub-3940256099942544/9257395921
+    Appopen_Use_3_Id: 0
+    Top_Allow: 0
+    Top_Adp_Small: 0
+    Top_Pos: 2
+    ADMOB_BANNER_AD_ID_Top: ca-app-pub-3940256099942544/6300978111
+    Small_CR_Allow: 0
+    Small_CR_Fixed_Change: 0
+    Small_CR_Small_Adap: 0
+    Small_CR_Pos: 3
+    ADMOB_BANNER_AD_ID_Small_CR: ca-app-pub-3940256099942544/6300978111
+    Bottom_Allow: 0
+    Bottom_Pos: 1
+    ADMOB_BANNER_AD_ID_Bottom: ca-app-pub-3940256099942544/6300978111
+    MedBan_Allow: 0
+    MedBan_Pos: 6
+    ADMOB_MEDIUMBANNER_AD_ID: ca-app-pub-3940256099942544/6300978111
     Int_Allow: 0
     ADMOB_INTERTITIAL_AD_ID: ca-app-pub-3940256099942544/1033173712
     Rew_Allow: 0
-    ADMOB_REWARDED_AD_ID: ca-app-pub-3940256099942544/5224354917
+    ADMOB_REWARDED_AD_ID: Use_Orignal
   ADMOB_ID:
     ADMOB_APP_ID: 
+    Appopen_Allow: 0
+    Appopen_Use_1_Id: 0
+    ADMOB_APP_OPEN_AD_ID: 
+    Appopen_Use_3_Id: 0
     Top_Allow: 0
-    Top_Adp_Smart: 0
+    Top_Adp_Small: 0
     Top_Pos: 0
     ADMOB_BANNER_AD_ID_Top: 
-    MedBan_Allow: 0
-    MedBan_Pos: 4
-    ADMOB_MEDIUMBANNER_AD_ID: 
     Small_CR_Allow: 0
     Small_CR_Fixed_Change: 0
+    Small_CR_Small_Adap: 0
     Small_CR_Pos: 5
     ADMOB_BANNER_AD_ID_Small_CR: 
     Bottom_Allow: 0
     Bottom_Pos: 1
     ADMOB_BANNER_AD_ID_Bottom: 
-    Appopen_Allow: 0
-    Appopen_Use_1_Id: 0
-    Appopen_Use_3_Id: 0
-    ADMOB_APP_OPEN_AD_ID: 
+    MedBan_Allow: 0
+    MedBan_Pos: 4
+    ADMOB_MEDIUMBANNER_AD_ID: 
     Int_Allow: 0
     ADMOB_INTERTITIAL_AD_ID: 
     Rew_Allow: 0
     ADMOB_REWARDED_AD_ID: 
-  CPMRec: []
-  CPInterstitial: []
-  CPSmallBanner: []
+  CP_AppOpen_Banner: []
+  CP_Top_Banner: []
+  CP_Small_CR_Banner: []
+  CP_Bottom_Banner: []
+  CP_MedBan_Banner: []
+  CP_Interstitial: []
+  CP_Reward: []
+  End: 0
   CPValue: 0
   appopenLoaded: 0
 --- !u!1 &2402744502677533703
@@ -15892,20 +15909,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Test_Ads: 0
-  Skip_Appopen: 0
-  Appopen_Allow: 1
+  Skip_AppOpen: 0
+  _AppOpen_Load: 1
+  Appopen_Use_3_Id: 0
   ADMOB_APP_ID: ca-app-pub-7170209482972029~5780538775
   ADMOB_AppOpen_ID:
   - ca-app-pub-7170209482972029/1240127145
   - ca-app-pub-7170209482972029/6327333686
   - ca-app-pub-7170209482972029/8215130424
   ADMOB_AppOpen_ID_Test: ca-app-pub-3940256099942544/9257395921
-  _AppOpen_Active: 0
-  _AppOpen_Load: 1
-  ForeGroundedAD: 0
   AppOpenHighText: {fileID: 6994886131147510898}
   AppOpenMedText: {fileID: 6994886131147510898}
   AppOpenLowText: {fileID: 6994886131147510898}
+  UAD: 0
+  ForeGroundedAD: 0
 --- !u!114 &7878091852292691115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15918,6 +15935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ae9b9af17f944e9acc8a8ee7a51f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FB_Timer: 1
+  FB_Active: 0
 --- !u!114 &7878091852292691116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15931,9 +15950,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Test_Ads: 0
-  UAD: 0
+  Ads_Googel_Max: 1
   AppID: ca-app-pub-7170209482972029~5780538775
   SdkKey: SnV0pI1HDgnfiRax03k5X9uaCbTrsKL2P19HNNqEZhwUMVrxZFZrQVdeD_HawBgL8t0nTfoSy4BPgzHdHCssN0
+  Skip_Int_IAP: 0
+  Skip_Rew_IAP: 0
+  Skip_App_IAP: 0
   Skip_Int: 0
   Ads_Int_Allow: 1
   InterID: 9e638993d592deb6
@@ -15943,6 +15965,7 @@ MonoBehaviour:
   Skip_App: 0
   Ads_Appopen_Allow: 0
   AppOpenID: 
+  UAD: 0
   ForeGroundedAD: 0
   TestDevices: []
 --- !u!114 &7880847795592475429

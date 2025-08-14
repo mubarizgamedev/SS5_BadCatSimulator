@@ -13,29 +13,45 @@ using System.Xml.Linq;
 public class MaxAdsManager : MonoBehaviour
 {
     public static MaxAdsManager Instance;
+
+    [Header("Test // Original")]
     public bool Test_Ads;
-    public bool UAD;
-    // ID
+
+    [Header("ID's")]
+    public bool Ads_Googel_Max;
     public String AppID;
     public String SdkKey;
-    // Int
+
+    [Header("Ads // Remove")]
+    public bool Skip_Int_IAP;
+    public bool Skip_Rew_IAP;
+    public bool Skip_App_IAP;
+
+    [Header("Int")]
     public bool Skip_Int;
     public bool Ads_Int_Allow;
     public String InterID;
-    // Rew
+
+    [Header("Rew")]
     public bool Skip_Rew;
     public bool Ads_Rew_Allow;
     public String RewardedID;
-    // AppOpen
+
+    [Header("AO")]
     public bool Skip_App;
     public bool Ads_Appopen_Allow;
     public String AppOpenID;
+
+    [Header("Other")]
+    public bool UAD;
     public bool ForeGroundedAD;
 
+    [Header("Device")]
     public string[] TestDevices;
 
     public Action RewardHandle;
     public Action NotRewardHandle;
+
     [HideInInspector]
     private bool InitSucceded;
     private bool IsInterstitialAdReady = false;
@@ -44,10 +60,11 @@ public class MaxAdsManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
     void OnEnable()
     {
-        Invoke(nameof(OnInitializeMax), 2f);
+        Invoke(nameof(OnInitializeMax), 1f);
     }
     void Start()
     {
@@ -65,6 +82,19 @@ public class MaxAdsManager : MonoBehaviour
             }
         }
     }
+
+    public void Btn_Remove_ADs(bool xXx)
+    {
+        Skip_Int = xXx;
+        Skip_Int_IAP = xXx;
+
+        Skip_Rew = xXx;
+        Skip_Rew_IAP = xXx;
+
+        Skip_App = xXx;
+        Skip_App_IAP = xXx;
+    }
+
 
     // SDK
     public void OnInitializeMax()
