@@ -327,9 +327,6 @@ public class EnemyHandler : MonoBehaviour
         if (m_Agent.enabled && m_Agent.isOnNavMesh && m_Agent)
         {
             m_Agent.ResetPath();
-        }
-        if (m_Agent.enabled)
-        {
             m_Agent.isStopped = false;
         }
 

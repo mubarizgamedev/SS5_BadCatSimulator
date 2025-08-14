@@ -22,6 +22,7 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip[] hitObjectRandom;
     public AudioClip clapSound;
     public AudioClip ButtonClick;
+    public AudioClip scratchSound;
 
     private void Awake()
     {

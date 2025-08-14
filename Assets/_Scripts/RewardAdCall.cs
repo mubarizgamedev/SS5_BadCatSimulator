@@ -38,10 +38,10 @@ public class RewardAdCall : MonoBehaviour
 
     public void StartLoading(Action workToDo)
     {
-        if (AdmobAdsManager.Instance)
-        {
-            AdmobAdsManager.Instance.LoadRewardedVideo();
-        }
+        //if (AdmobAdsManager.Instance)
+        //{
+        //    AdmobAdsManager.Instance.LoadRewardedVideo();
+        //}
 
         workAction = null;
         workAction = workToDo;
@@ -68,7 +68,7 @@ public class RewardAdCall : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        AdmobAdsManager.Instance.ShowRewardedVideo(DoAction);
+        MaxAdsManager.Instance.Btn_LS_Rew(DoAction);
         loadingPanel.SetActive(false);
     }
     void DoAction()

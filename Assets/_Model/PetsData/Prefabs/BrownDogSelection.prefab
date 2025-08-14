@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.94510216, z: -0, w: 0.32677513}
   m_LocalPosition: {x: 0.059362866, y: 0, z: 0.04510811}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8789491503842256747}
@@ -153,7 +153,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8eca45507b7fdf84696950f24e470ee5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.393
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -665,31 +665,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.1094018
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.1094018
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.1094018
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17402586
+      value: 0.09081062
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.031000003
+      value: -0.057238027
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.14062652
+      value: -0.06495617
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99678576
+      value: 0.7318582
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.08011337
+      value: -0.681457
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -709,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -9.19
+      value: -85.915
       objectReference: {fileID: 0}
     - target: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -907,13 +907,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -2.9409869
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7319886339822701804, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3050714882750788088, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3398659884373696404}
+    - targetCorrespondingSourceObject: {fileID: 3050714882750788088, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3302704257307569694}
   m_SourcePrefab: {fileID: 100100000, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
 --- !u!1 &1790772161617370002 stripped
 GameObject:
@@ -933,6 +937,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dogBarkClip: {fileID: 8300000, guid: 0c03b709b28b12a45880091839d51280, type: 3}
+--- !u!95 &3302704257307569694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790772161617370002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8fcc39bb830dea0419b6b2053402bb0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8789491503842256747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5437748258222099713, guid: 99a00b3fdae479149975259c3f16cb9c, type: 3}
