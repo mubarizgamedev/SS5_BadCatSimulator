@@ -25531,7 +25531,7 @@ MonoBehaviour:
   fillerImage: {fileID: 4022602930283518537}
   loadingText: {fileID: 2438497483303858459}
   textToShow: Loading Ad...
-  loadingTime: 3
+  loadingTime: 0
 --- !u!4 &2091796467
 Transform:
   m_ObjectHideFlags: 0

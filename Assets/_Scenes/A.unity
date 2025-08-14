@@ -15848,6 +15848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1340055210774439965}
+  - component: {fileID: 7878091852292691116}
   - component: {fileID: 7878091852292691114}
   - component: {fileID: 2378620625421148707}
   - component: {fileID: 7878091852292691115}
@@ -15917,6 +15918,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ae9b9af17f944e9acc8a8ee7a51f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7878091852292691116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878091852292691111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36836fe168bf47c4cb46ebe7a968c047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Test_Ads: 0
+  UAD: 0
+  AppID: 
+  SdkKey: 
+  Skip_Int: 0
+  Ads_Int_Allow: 1
+  InterID: 
+  Skip_Rew: 0
+  Ads_Rew_Allow: 1
+  RewardedID: 
+  Skip_App: 0
+  Ads_Appopen_Allow: 0
+  AppOpenID: 
+  ForeGroundedAD: 0
+  TestDevices: []
 --- !u!114 &7880847795592475429
 MonoBehaviour:
   m_ObjectHideFlags: 0

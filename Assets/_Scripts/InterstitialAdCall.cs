@@ -37,13 +37,13 @@ public class InterstitialAdCall : MonoBehaviour
     {
         if (AdmobAdsManager.Instance)
         {
-            AdmobAdsManager.Instance.LoadInterstitial();
+            //AdmobAdsManager.Instance.LoadInterstitial();
         }
 
 
         panelActivation = activationOfPanel;
         workAction = workToDo;
-        loadingPanel.SetActive(true);
+        loadingPanel.SetActive(false);
         currentTime = 0f;
         isLoading = true;
         fillerImage.fillAmount = 0f;
@@ -68,7 +68,8 @@ public class InterstitialAdCall : MonoBehaviour
     {
         if (AdmobAdsManager.Instance)
         {
-            AdmobAdsManager.Instance.ShowInterstitial();
+            //AdmobAdsManager.Instance.ShowInterstitial();
+            MaxAdsManager.Instance.Btn_LS_Int();
         }
 
         //mubari

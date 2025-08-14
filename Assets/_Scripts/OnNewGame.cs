@@ -15,8 +15,13 @@ public class OnNewGame : MonoBehaviour
     public UnityEvent OnPrevGameEvents;
 
 
+    public static OnNewGame Instance { get; private set; }
 
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         petCamera.enabled = false;
@@ -83,5 +88,12 @@ public class OnNewGame : MonoBehaviour
             }
 
         }
+    }
+
+    public void TutorialDone()
+    {
+        firstSceneDirector.gameObject.SetActive(false);
+        Pet.SetActive(true);
+        OnPrevGameEvents?.Invoke();
     }
 }

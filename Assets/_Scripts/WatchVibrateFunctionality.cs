@@ -30,16 +30,6 @@ public class WatchVibrateFunctionality : MonoBehaviour
         TouchCheck.OnTouch -= OnFirstConvoPanelBackClicked;
     }
 
-
-
-    //void OnWatchButtonClicked()
-    //{
-    //    SFX_Manager.PlaySound(SFX_Manager.Instance.ButtonClick);
-    //    watchParent.SetActive(false);
-    //    firstConvoPanel.SetActive(true);
-    //    startTimer = true;
-    //}
-
     private void Update()
     {
         if (startTimer)
@@ -71,6 +61,7 @@ public class WatchVibrateFunctionality : MonoBehaviour
         firstConvoPanel.SetActive(false);
         PlayerPrefs.SetInt("Tutorial", 1);
         yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        OnNewGame.Instance.TutorialDone();
     }
 }

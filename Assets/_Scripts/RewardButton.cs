@@ -6,7 +6,6 @@ public class RewardButton : MonoBehaviour
     public GameObject currentRewardedGameobject;
     [SerializeField] PlayerRaycaster playerRaycaster;
     [SerializeField] AdAfter40Sec AdAfter40Sec;
-    [SerializeField] GameObject rewardLoading;
 
 
 
@@ -21,19 +20,10 @@ public class RewardButton : MonoBehaviour
     }
 
     public void Btn_Reward()
-    {     
-        rewardLoading.SetActive(true);
-
-        load_rew(); 
-        Invoke(nameof(ShowRewardVideo), Timer_xXx);
-
-    }
-    void ShowRewardVideo()
     {
-        Debug.Log("ShowRewardVideo");
-        rewardLoading.SetActive(false);
-        show_rew();
+        ShowReward();
     }
+    
     void ActionReward()
     {
         currentRewardedGameobject.layer = 8;
@@ -44,30 +34,8 @@ public class RewardButton : MonoBehaviour
         }
     }
 
-    float Timer_xXx;
-    // Rew
-    void load_rew()
+    void ShowReward()
     {
-        if (AdmobAdsManager.Instance.Ads_Googel_Max == true)
-        {
-            Timer_xXx = 0.1f;
-            // ADsMax
-        }
-        else
-        {
-            Timer_xXx = 6f;
-            AdmobAdsManager.Instance.LoadRewardedVideo();
-        }
-    }
-    void show_rew()
-    {
-        if (AdmobAdsManager.Instance.Ads_Googel_Max == true)
-        {
-            //MaxAdsManager.Instance.Btn_LS_Rew(ActionReward);
-        }
-        else
-        {
-            AdmobAdsManager.Instance.ShowRewardedVideo(ActionReward);
-        }
+        RewardAdCall.Instance.StartLoading(ActionReward);
     }
 }

@@ -10,8 +10,8 @@ using GoogleMobileAds.Common;
 using GoogleMobileAds.Ump;
 using GoogleMobileAds.Ump.Api;
 
-using GoogleMobileAds.Api.Mediation.AppLovin;  // for AppLovined
-using GoogleMobileAds.Api.Mediation.Vungle;    // for LiftOff ( Vungle )
+//using GoogleMobileAds.Api.Mediation.AppLovin;  // for AppLovined
+//using GoogleMobileAds.Api.Mediation.Vungle;    // for LiftOff ( Vungle )
 //using Facebook.Unity;                          // for Meta
 //using GameAnalyticsSDK;                        // for Meta
 //using GoogleMobileAds.Api.Mediation.Pangle;    // for Pangle
@@ -567,11 +567,11 @@ public class AdmobAdsManager : MediationHandler
         }
 
         // Applovin
-        else if (AdapterClassname.Contains("Applovin")) // Applovin
-        {
-            AppLovin.SetHasUserConsent(true);
-            Debug.Log("Applovin initialized");
-        }
+        //else if (AdapterClassname.Contains("Applovin")) // Applovin
+        //{
+        //    AppLovin.SetHasUserConsent(true);
+        //    Debug.Log("Applovin initialized");
+        //}
 
         //else if (AdapterClassname.Contains("adcolony")) // Adcolony
         //{
