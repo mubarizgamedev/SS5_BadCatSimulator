@@ -36,19 +36,13 @@ public class SpecialManager : MonoBehaviour
 
     public void OnShockButtonPressed()
     {
-        InterstitialAdCall.Instance.StartLoading(() =>
-        {
             currentRewardPanel.SetActive(true);
-        });
-        
     }
 
     public void OnPunchButtonPressed()
     {
-        InterstitialAdCall.Instance.StartLoading(() =>
-        {
+        
             boxingRewardPanel.SetActive(true);
-        });
         
     }
 

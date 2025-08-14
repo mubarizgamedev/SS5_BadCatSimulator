@@ -234,7 +234,7 @@ public class GameAppManager : MonoBehaviour, IStoreListener
 
             var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
 
-            apple.RestoreTransactions((result) =>
+            apple.RestoreTransactions((result, error) =>
             {
 
                 Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
