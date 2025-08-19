@@ -23,6 +23,7 @@ public class SFX_Manager : MonoBehaviour
     public AudioClip clapSound;
     public AudioClip ButtonClick;
     public AudioClip scratchSound;
+    public AudioClip doorOpenSound;
 
     private void Awake()
     {

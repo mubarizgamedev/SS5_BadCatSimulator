@@ -68,7 +68,15 @@ public class RewardAdCall : MonoBehaviour
 
     private void OnLoadingComplete()
     {
-        MaxAdsManager.Instance.Btn_LS_Rew(DoAction);
+        if (MaxAdsManager.Instance)
+        {
+            MaxAdsManager.Instance.Btn_LS_Rew(DoAction);
+        }
+        else
+        {
+            DoAction();
+        }
+        
         loadingPanel.SetActive(false);
     }
     void DoAction()
@@ -80,6 +88,7 @@ public class RewardAdCall : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         workAction?.Invoke();
+        if(AdmobAdsManager.Instance)
         AdmobAdsManager.Instance.Btn_Reward_Done("");
     }
 

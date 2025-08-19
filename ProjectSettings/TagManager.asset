@@ -34,6 +34,7 @@ TagManager:
   - Quest
   - Toy
   - PlayerHand
+  - LockDoor
   layers:
   - Default
   - TransparentFX

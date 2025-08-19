@@ -26,6 +26,8 @@ public class PlayerCollisionEvents : MonoBehaviour
     public static event Action OnKeyHit;
     public static event Action OnPuchBoxTrigger;
     public static event Action OnShockGunTrigger;
+    public static event Action OnLockDoorTrigger;
+    public static event Action OnLockDoorTriggerExit;
     [SerializeField] AudioClip keySound;
     [SerializeField] AudioClip diamondSound;
 
@@ -98,6 +100,18 @@ public class PlayerCollisionEvents : MonoBehaviour
             {
                 OnShockGunTrigger?.Invoke();
             }
+        }
+        if (other.CompareTag("LockDoor"))
+        {
+            OnLockDoorTrigger?.Invoke();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LockDoor"))
+        {
+            OnLockDoorTriggerExit?.Invoke();
         }
     }
 }
