@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpecialAttack_PopUp : MonoBehaviour
 {
+    public static SpecialAttack_PopUp Instance;
     public float adDelay = 45f;
     private const float secondaryFunctionDelay = 40f;
     [SerializeField] GameObject[] InApps;
@@ -11,6 +12,17 @@ public class SpecialAttack_PopUp : MonoBehaviour
 
     bool start;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnEnable()
     {
         start = true;

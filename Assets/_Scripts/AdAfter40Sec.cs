@@ -2,6 +2,8 @@
 
 public class AdAfter40Sec : MonoBehaviour
 {
+
+    public static AdAfter40Sec Instance;
     public bool canShowAd = false;
     public float adDelay = 45f;
     private const float secondaryFunctionDelay = 40f;
@@ -13,6 +15,18 @@ public class AdAfter40Sec : MonoBehaviour
 
     bool start;
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnEnable()
     {
         start = true;
